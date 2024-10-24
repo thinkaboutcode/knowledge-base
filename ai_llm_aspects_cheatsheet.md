@@ -93,7 +93,7 @@ $$
 L = -\sum_{i} y_i \log(\hat{y}_i)
 $$
 
-where \(y_i\) is the true label and \(\hat{y}_i\) is the predicted probability.
+where $$\(y_i\)$$ is the true label and $$\(\hat{y}_i\)$$ is the predicted probability.
 
 ---
 
