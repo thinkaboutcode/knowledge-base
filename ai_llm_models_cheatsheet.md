@@ -1,0 +1,34 @@
+# LLM (Large Language Model) Cheatsheet
+
+| **Model**                  | **Description**                                           | **Strengths**                                               | **Weaknesses**                                            | **Tips for Use**                                         | **Open Source / Paid** |
+|----------------------------|-----------------------------------------------------------|-------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|------------------------|
+| **GPT-4**                   | Developed by OpenAI, it's known for versatility in text generation, summarization, and conversation. | - High-quality text generation <br> - Context-aware <br> - Can understand complex prompts | - Can produce incorrect or biased information <br> - May require fine-tuning for specific tasks | - Use specific prompts for better context <br> - Experiment with temperature settings for creativity | **Paid** (via API or ChatGPT) |
+| **BERT**                    | Developed by Google, BERT is designed for understanding the context of words in search queries. | - Excels at tasks requiring contextual understanding <br> - Strong in NLP tasks like sentiment analysis | - Slower and less efficient in generating long-form text <br> - Fixed context window | - Use for tasks needing comprehension and classification <br> - Fine-tune on domain-specific data | **Open Source** |
+| **T5 (Text-to-Text Transfer Transformer)** | Treats every NLP task as a text-to-text problem, making it very flexible. | - Versatile across various NLP tasks <br> - Can generate, summarize, translate, etc. | - Computationally expensive <br> - May need extensive fine-tuning | - Use it for multiple NLP tasks in one model <br> - Ensure quality of input data | **Open Source** |
+| **BART (Bidirectional and Auto-Regressive Transformers)** | Developed by Facebook (Meta), BART is a seq2seq model that is strong in text generation and summarization tasks. | - Combines strengths of BERT and GPT <br> - Great for text generation, summarization, and translation <br> - Robust to noise in input data | - Computationally expensive <br> - Less efficient with extremely long documents | - Best for text summarization, generation, and translation tasks <br> - Fine-tune it for domain-specific tasks | **Open Source** |
+| **XLNet**                   | An autoregressive model that captures bidirectional context. | - Outperforms BERT on various NLP benchmarks <br> - More robust understanding of sentence structure | - More complex architecture, harder to implement <br> - Requires more data for effective training | - Best for tasks that require deep contextual understanding <br> - Utilize pre-trained models for specific tasks | **Open Source** |
+| **RoBERTa**                 | An optimized version of BERT, fine-tuned on larger datasets. | - Strong performance on various benchmarks <br> - Better generalization than BERT | - Still limited by fixed context window <br> - Performance may drop on out-of-domain tasks | - Use for improved performance on sentiment and text classification tasks <br> - Experiment with different hyperparameters | **Open Source** |
+| **DistilBERT**              | A lighter, faster version of BERT, designed for efficiency. | - Faster and requires less computing power <br> - Retains much of BERT’s performance | - Slightly lower accuracy than BERT <br> - Less capable of handling very complex queries | - Ideal for applications with limited resources <br> - Use when speed is more critical than accuracy | **Open Source** |
+| **Claude**                  | Developed by Anthropic, focuses on safe and reliable text generation. | - Emphasizes ethical guidelines and reduced biases <br> - Conversationally adept | - Still in development; may lack the breadth of tasks | - Use for applications emphasizing safety and ethical considerations <br> - Ideal for chatbots and customer service applications | **Paid** (via API) |
+| **ChatGPT**                 | A variant of GPT-3 and GPT-4 optimized for conversational tasks. | - Engaging conversational abilities <br> - Good for interactive applications | - May generate irrelevant or off-topic responses <br> - Context limitations in longer conversations | - Set clear conversational goals <br> - Provide context in multi-turn interactions | **Paid** (via ChatGPT) |
+| **LLaMA 2 (Meta)**          | Developed by Meta, LLaMA 2 is designed for research and commercial use with open access. | - Highly efficient <br> - Performs well across many NLP benchmarks <br> - Scalable for different use cases | - Requires fine-tuning for specific tasks <br> - Can be resource-intensive for deployment | - Ideal for experimentation in both research and commercial applications <br> - Fine-tune for domain-specific tasks | **Open Source** (with registration) |
+| **xAI's Grok**              | Developed by Elon Musk's xAI, Grok is integrated into X (formerly Twitter) to assist with real-time contextual conversations. | - Integrated with X for social media <br> - Focus on real-time contextuality <br> - Works well for short-form queries and interactions | - Limited outside of X platform for now <br> - Still in early stages of development | - Ideal for real-time social media interaction <br> - Use for concise and direct conversational queries | **Paid** (via X premium) |
+
+---
+
+## General Tips for Using LLMs
+
+1. **Specify Your Goals**: Clearly define what you want the model to achieve. Different models excel in different tasks.
+2. **Experiment with Prompts**: Tailor your input prompts for better results. Use examples, specify formats, and be clear.
+3. **Temperature Settings**: Adjust the temperature to control creativity. Lower values (0.2-0.5) yield more deterministic results, while higher values (0.7-1.0) generate more diverse outputs.
+4. **Fine-tuning**: Consider fine-tuning models on your specific dataset for improved performance on specialized tasks.
+5. **Monitor Outputs**: Regularly check the model outputs for accuracy and bias, especially in sensitive applications.
+6. **Batch Processing**: When generating multiple outputs, use batch processing to save time and computational resources.
+7. **Combine Models**: For complex tasks, consider combining models or using ensemble methods for better performance.
+8. **Ethical Considerations**: Always keep ethical considerations in mind, particularly when deploying models in real-world applications.
+
+---
+
+## Conclusion
+
+Choosing the right LLM depends on the specific application and requirements. By understanding the strengths and weaknesses of each model and utilizing effective strategies, you can significantly enhance your results in various natural language processing tasks.
