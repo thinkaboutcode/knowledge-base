@@ -19,6 +19,8 @@
 | **LLaMA 2 (Meta)**          | Developed by Meta, LLaMA 2 is designed for research and commercial use with open access. | - Highly efficient <br> - Performs well across many NLP benchmarks <br> - Scalable for different use cases | - Requires fine-tuning for specific tasks <br> - Can be resource-intensive for deployment | **7B, 13B, 70B Params**    | - Ideal for experimentation in both research and commercial applications <br> - Fine-tune for domain-specific tasks | **Open Source** (with registration) | **$2-10M** |
 | **xAI's Grok**              | Developed by Elon Musk's xAI, Grok is integrated into X (formerly Twitter) to assist with real-time contextual conversations. | - Integrated with X for social media <br> - Focus on real-time contextuality <br> - Works well for short-form queries and interactions | - Limited outside of X platform for now <br> - Still in early stages of development | Unknown                   | - Ideal for real-time social media interaction <br> - Use for concise and direct conversational queries | **Paid** (via X premium) | **Unknown** |
 
+Cost Calculator:
+https://huggingface.co/training-cluster
 ---
 
 ## General Tips for Using LLMs
