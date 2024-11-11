@@ -7,17 +7,18 @@
 - **Foreign Function & Memory API (Second Incubator)**: Enhances native code interaction, providing more control over memory management.
 - **Sequenced Collections**: New interfaces and collections that guarantee element ordering.
 
+
 ### Record Pattern in Java
 
 The **record pattern** is a feature introduced in **Java 21** as part of the Project Amber initiative. It enhances pattern matching by allowing developers to match and destructure **record types**. Records, introduced in Java 14 as a preview feature and finalized in Java 16, are a special kind of class in Java designed to be simple data carriers, automatically generating methods like `equals()`, `hashCode()`, and `toString()`.
 
 #### Key Concepts of Record Pattern
 
-##### 1. Simplified Syntax for Matching Records
+#### 1. Simplified Syntax for Matching Records
 - A **record** in Java is a class that holds a fixed set of fields. With the **record pattern**, Java enables you to destructure those fields easily within the context of **pattern matching**.
 - It simplifies code that traditionally uses **`instanceof`** and **type casting** to work with the fields of a record.
 
-##### 2. Pattern Matching for Record Classes
+#### 2. Pattern Matching for Record Classes
 - The **record pattern** allows you to match records and extract their components directly in the pattern.
 - This feature eliminates the need for manually accessing the fields of the record.
 
@@ -110,6 +111,58 @@ This change encourages developers to move towards **modular and secure approache
 - **JEP 395: Strongly Encapsulate JDK Internals**: Ensures internal JDK APIs are fully encapsulated, increasing security.
 - **JEP 396: Strongly Encapsulate JDK Internals**: Further improvements to encapsulation of internal JDK APIs.
 
+### Java Records vs. Lombok
+
+Java's **records**, introduced in **Java 16**, share some functionality with the **Lombok** library, especially for creating data classes. Lombok has been popular for reducing boilerplate in Java with annotations, but records bring an alternative with differences in design and scope. Here’s a comparison:
+
+#### Similarities Between Records and Lombok
+
+- **Boilerplate Reduction**: Both records and Lombok reduce repetitive code in Java by eliminating the need to manually write getters, `equals()`, `hashCode()`, and `toString()` methods.
+- **Immutability Support**: Records are inherently immutable, and Lombok can create immutable classes with annotations like `@Value`.
+- **Data-Oriented Classes**: Both are used primarily for classes that act as **data holders** rather than objects with complex behavior.
+
+#### Key Differences Between Records and Lombok
+
+#### 1. Built-In vs. External Library
+- **Records** are a core part of Java starting from **Java 16**, with no external dependencies required.
+- **Lombok** is a third-party library, which requires adding a dependency and may have compatibility issues across IDEs and Java versions.
+
+#### 2. Immutable by Default vs. Configurable Immutability
+- **Records** enforce immutability by design: fields are `final` and cannot change after construction.
+- **Lombok** allows both **mutable** and **immutable** classes. With annotations like `@Data`, Lombok can generate setters for mutable fields, while `@Value` makes immutable classes.
+
+#### 3. Customization of Fields and Methods
+- **Lombok** provides greater flexibility with features like:
+  - `@Builder` for complex object construction.
+  - `@ToString`, `@EqualsAndHashCode`, and `@Getter/@Setter` for fine-tuned control over specific methods.
+  - Optional parameters, validation, and default values using `@Builder.Default`.
+- **Records** have more limitations. The primary constructor and `toString`, `equals`, and `hashCode` methods are automatically generated and cannot be customized with additional annotations. However, other methods can be added, and **compact constructors** allow data validation or transformation on creation.
+
+#### 4. Subclassing and Finality
+- **Records** are implicitly `final` and cannot be subclassed, which supports immutability and predictability.
+- **Lombok** classes are not necessarily `final` and can be subclassed, which is useful when inheritance is required.
+
+#### 5. Compatibility and Ecosystem
+- **Records**, being a core language feature, are fully supported across Java tooling, IDEs, and frameworks.
+- **Lombok** support varies by IDE and build tool, though it has improved over the years.
+
+#### When to Use Records vs. Lombok
+
+- **Use Records** when:
+  - You want a **concise, immutable data class** without external dependencies.
+  - You’re working on a project where **immutability** is essential and using Java 16 or newer.
+  - You don’t need the additional customization features that Lombok offers.
+
+- **Use Lombok** when:
+  - You need **customization** beyond what records provide, such as mutable fields, builder patterns, or optional methods like setters.
+  - You’re working with a codebase that already uses Lombok or needs to support a **Java version older than Java 16**.
+  - You need finer control over specific methods or fields.
+
+#### Summary
+
+Java **records** offer a built-in solution for creating immutable data classes in Java but lack the advanced features and flexibility provided by **Lombok**. For developers who need simplicity and immutability and are on Java 16+, records are a powerful tool. However, for projects requiring more customization or backward compatibility, **Lombok** remains a valuable alternative.
+
+
 ## Java 15 (September 2020)
 - **Sealed Classes (Preview)**: Introduces sealed classes to restrict the inheritance of classes.
 - **Hidden Classes**: Supports hidden classes that can be used by frameworks for better runtime performance.
@@ -120,10 +173,51 @@ This change encourages developers to move towards **modular and secure approache
 - **JEP 359: Records (Preview)**: Introduces records, a new kind of type to model immutable data.
 - **JEP 370: Foreign-Memory Access API (Incubator)**: Introduces a new API for safely accessing memory outside of the Java heap.
 
+### Helpful NullPointerException (Java 14)
+
+Introduced in **Java 14**, the **Helpful NullPointerException** provides more detailed information when a `NullPointerException` occurs. It helps developers quickly identify which variable or expression caused the `null` dereference, making debugging easier and faster.
+
+#### Key Features:
+- **Detailed Error Messages**: The exception message includes the name of the variable or expression that was `null`.
+- **Improved Debugging**: Instead of just saying `NullPointerException`, it specifies which object or method was null, providing context to locate the issue quickly.
+- **Enabled by Default**: This feature is enabled by default in Java 14 and later.
+- **Can Be Disabled**: It can be turned off with the JVM flag `-XX:-ShowCodeDetailsInExceptionMessages`.
+
+#### Benefits:
+- **Faster Debugging**: Developers can easily spot which variable caused the exception.
+- **Better Developer Experience**: Makes stack traces more informative and reduces debugging time.
+
+In summary, **Helpful NullPointerException** in Java 14 enhances error messages to make `NullPointerExceptions` easier to debug by showing exactly which part of the code was `null`.
+
+
 ## Java 13 (September 2019)
 - **JEP 355: Text Blocks**: Introduces text blocks for multi-line string literals, improving readability and reducing escape sequences.
 - **JEP 351: ZGC (Z Garbage Collector)**: Improved ZGC for better performance and scalability.
 - **JEP 350: Dynamic CDS Archives**: Introduces a dynamic class-data-sharing feature to improve startup performance.
+
+### Text Blocks for Multi-Line String Literals (Java 13+)
+
+Introduced in **Java 13** as a **preview feature** and made permanent in **Java 15**, **text blocks** provide an easier and more readable way to work with **multi-line string literals**. They eliminate the need for cumbersome concatenation and escape sequences, making the code cleaner and more readable.
+
+#### Key Features of Text Blocks:
+- **Multi-line Strings**: Text blocks allow you to define strings that span multiple lines without the need for explicit line breaks or concatenation.
+- **Automatic Formatting**: Whitespace and line breaks are preserved as part of the string, making the code more intuitive.
+- **Escape Sequences**: You no longer need to escape special characters like newline `\n`, tab `\t`, or quotes `\"` within the text block.
+- **Consistent Indentation**: The text block automatically strips out unnecessary leading indentation, making the code look well-structured.
+
+#### Syntax:
+Text blocks are enclosed in triple quotes (`"""`), and the string content inside can span multiple lines.
+
+#### Example:
+```java
+String json = """
+               {
+                 "name": "John",
+                 "age": 30,
+                 "city": "New York"
+               }
+               """;
+
 
 ## Java 12 (March 2019)
 - **JEP 189: Shenandoah GC (Garbage Collector)**: Experimental low-latency garbage collector that reduces GC pause times.
