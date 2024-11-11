@@ -61,6 +61,50 @@ This feature is part of a broader set of improvements in pattern matching in Jav
 - **New macOS Rendering Pipeline**: Uses Apple's Metal API for improved graphics performance on macOS.
 - **JEP 411: Deprecate the Security Manager for Removal**: Signals the potential removal of the Security Manager.
 
+### Effect of "Strong Encapsulation of JDK Internals" on Existing Code
+
+The feature **"Strong Encapsulation of JDK Internals"**, introduced in **Java 16** and refined in later versions, has significant implications for existing code, especially those relying on internal JDK APIs. Below is an overview of the effect this change has on legacy and current applications:
+
+#### 1. Inaccessibility of Internal JDK APIs
+- **By default, internal JDK APIs** (e.g., classes and methods under `sun.*`, `com.sun.*`, or `jdk.*`) are **no longer accessible** unless explicitly allowed via command-line flags or module configurations.
+- Previously, these internal APIs were available for tasks like performance optimization, working around limitations, or leveraging undocumented functionality.
+- **Result**: Any code that uses these internal APIs will break or fail to compile since they are no longer part of the public API.
+
+#### 2. Impact on Existing Code
+- **Compilation Failures**: Code that imports or uses internal JDK classes will result in **compilation errors** if the modules or packages are not explicitly opened.
+- **Runtime Failures**: Even if code compiles (e.g., through reflective access or command-line flags), attempting to access these APIs will result in **runtime errors**, such as `IllegalAccessException`, unless the program is configured to allow access using JVM flags.
+- **Reflection-Based Code**: Many frameworks (e.g., Hibernate, Spring, and application servers) and tools may use reflection to access JDK internals. This type of code may break due to **strong encapsulation**, requiring updates to the framework or additional configurations to re-enable access.
+
+#### 3. JVM Flags and Workarounds
+- **Command-Line Flags**: Developers can still access these internal APIs by using JVM flags like `--add-opens` or `--add-exports`. For example:
+    - `--add-opens java.base/sun.nio.ch=ALL-UNNAMED` to allow access to internal classes in the `sun.nio.ch` package.
+    - `--add-exports java.base/com.sun.nio.sctp=ALL-UNNAMED` to export internal JDK packages to unnamed modules.
+- **Note**: This workaround **is not recommended for production**, as it negates some of the security and modularity benefits of strong encapsulation.
+
+#### 4. Security and Maintenance Benefits
+- **Improved Security**: Strong encapsulation limits the attack surface by preventing access to internal and potentially insecure or outdated JDK classes.
+- **Stability and Maintainability**: By hiding internal APIs, future JDK releases can change the implementation of these APIs without breaking public-facing code. This leads to **better stability** across Java versions.
+- **Encourages Best Practices**: It encourages developers to use officially supported, public APIs or libraries that are not reliant on undocumented or unsupported internal features.
+
+#### 5. What Can Developers Do?
+- **Update Dependencies**: If your application relies on internal JDK APIs, you need to either update the affected code or migrate to official Java APIs or third-party libraries that do not depend on JDK internals.
+- **Use Public APIs**: Developers are encouraged to migrate their code to **official, supported Java APIs** or leverage newer solutions available in Java.
+
+#### 6. Example Use Cases Affected
+- **Reflection Access**: If your code uses reflection to access JDK internals, this will no longer work unless granted access via JVM flags.
+- **Frameworks and Libraries**: Some third-party libraries or frameworks that relied on internal JDK APIs (e.g., `sun.misc.Unsafe`) may break unless updated to avoid reliance on these internals.
+- **Custom JVM Optimizations**: If your application directly interfaces with JVM internals for optimizations (e.g., garbage collection tuning or memory buffers), this will require changes.
+
+#### Summary
+**Strong Encapsulation of JDK Internals** improves Java’s security and maintainability but introduces challenges for codebases dependent on internal JDK APIs. To maintain compatibility with newer Java versions:
+
+- **Refactor or replace** reliance on internal JDK APIs.
+- Use **official APIs** or migrate to third-party libraries that do not depend on JDK internals.
+- If necessary, use JVM flags temporarily for compatibility, but this is not recommended for production environments due to security risks.
+
+This change encourages developers to move towards **modular and secure approaches**, adhering to public, supported Java APIs.
+
+
 ## Java 16 (March 2021)
 - **JEP 376: ZGC on macOS**: Adds support for ZGC (Z Garbage Collector) on macOS for low-latency garbage collection.
 - **JEP 395: Strongly Encapsulate JDK Internals**: Ensures internal JDK APIs are fully encapsulated, increasing security.
