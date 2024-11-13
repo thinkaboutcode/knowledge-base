@@ -1,54 +1,131 @@
-# Most Used Kubernetes Patterns
+# Kubernetes Patterns from *Kubernetes Patterns* by Roland Huß
 
-Kubernetes (K8s) patterns help developers and operators create, manage, and scale distributed applications in a containerized environment. These patterns are generally categorized into broad types, each targeting different aspects of application management, from deployment to scaling, availability, and more. Below is an overview of the most widely used Kubernetes patterns:
+https://github.com/k8spatterns/examples
 
 ## 1. Foundational Patterns
-These are the core patterns that help manage the application's lifecycle and are fundamental for any Kubernetes deployment.
+Foundational patterns are essential constructs that help set up the base for deploying applications on Kubernetes.
 
-- **Single Container Pattern**: Simplifies deployment by using a single container per pod, typically suited for stateless applications or microservices.
-- **Sidecar Pattern**: Adds a secondary, helper container within the same pod to enhance or support the main container’s functionality. Common uses include logging, monitoring, proxying, or caching.
-- **Ambassador Pattern**: A container within a pod acts as an interface between the main application and external services. This is useful for proxy configurations, authentication, or rate-limiting.
-- **Adapter Pattern**: Transforms data between the application and an external service by adding a container within the pod to bridge communication formats.
+- **Predictable Demands:** Designing for known usage demands, allowing resources to be allocated effectively.
+- **Declarative Deployment:** Using declarative manifests (YAML) to define and deploy applications.
+- **Self-Healing:** Leveraging Kubernetes' built-in capabilities for self-healing, such as automatic restarts and rescheduling.
+- **Automated Scheduling:** Letting Kubernetes handle scheduling decisions to optimize resource utilization and workload placement.
 
-## 2. Structural Patterns
-These patterns help define the architecture of distributed applications and focus on application scaling, availability, and modularity.
+## 2. Behavioral Patterns
+These patterns focus on managing the application's runtime behavior on Kubernetes.
 
-- **Multi-Container Pod Pattern**: Utilizes multiple containers in a single pod to run closely related tasks, such as a primary application and a logging service.
-- **Leader Election Pattern**: Used for applications that require one active instance, with other replicas on standby. Kubernetes manages this by electing a leader among pods for performing certain tasks, ensuring availability if the leader fails.
-- **Sidecar Chain Pattern**: Expands on the Sidecar pattern by adding multiple sidecars in a sequence. Each sidecar in the chain performs specific tasks, such as chaining multiple data transformation services for processing a data stream.
+- **Health Probe:** Using readiness and liveness probes to monitor and manage application health.
+- **Predictable Scheduling:** Ensuring applications are placed in predictable locations or nodes.
+- **Managed Lifecycle:** Leveraging lifecycle hooks to handle pre- and post-start behaviors.
+- **Configuration Resource:** Managing environment-specific configurations, such as with ConfigMaps and Secrets.
+- **Resource Management:** Defining resource requests and limits to control application resource usage.
 
-## 3. Behavioral Patterns
-These patterns deal with the dynamic behavior of applications, like scaling, lifecycle management, and task scheduling.
+## 3. Structural Patterns
+Structural patterns address ways to architect applications and services for modularity, scalability, and resilience.
 
-- **Operator Pattern**: Encapsulates domain-specific logic for managing complex applications using Kubernetes resources. Operators are custom controllers designed to manage applications or services, automating tasks like configuration, backup, and recovery.
-- **Job Pattern**: Manages tasks that need to run to completion. Kubernetes jobs are used for running batch jobs, like data processing or cleanup tasks, where each job is terminated upon completion.
-- **DaemonSet Pattern**: Ensures that a pod runs on all (or specific) nodes, commonly used for logging, monitoring, or networking services across the Kubernetes cluster.
-- **StatefulSet Pattern**: Manages stateful applications that require stable network identity and storage. It is ideal for databases or applications that require ordered, persistent pod management.
+- **Sidecar:** Extending the functionality of a primary application container by pairing it with auxiliary containers (e.g., logging, monitoring).
+- **Adapter:** Creating compatibility layers between services, such as API gateways or protocol translators.
+- **Ambassador:** Configuring a helper container that acts as a proxy to external services or APIs.
+- **Init Container:** Running one-time setup tasks using Init Containers before starting the main application container.
+- **Leader Election:** Ensuring that only one instance of a pod assumes a leadership role in a multi-instance deployment.
 
 ## 4. Configuration Patterns
-These patterns focus on separating application code from its configurations, making it easier to manage and update applications across different environments.
+Configuration patterns focus on effectively managing configuration data for cloud-native applications.
 
-- **Configuration Map Pattern**: Uses ConfigMaps to manage configuration data that can be injected into containers as environment variables or files, allowing dynamic changes without modifying the application code.
-- **Secret Pattern**: Similar to ConfigMap but specifically designed for managing sensitive data like passwords, tokens, and keys, with controlled access to the secrets.
-- **Environment Variable Pattern**: Allows injecting configuration through environment variables, making it easy to manage application settings across environments.
+- **Configuration Resource:** Using Kubernetes resources like ConfigMaps and Secrets for externalized configuration management.
+- **Environment Variable Configuration:** Passing configurations as environment variables to applications, making them more flexible.
+- **Configuration Template:** Using templates and parameterized configurations to customize application deployments across environments.
 
-## 5. Security Patterns
-Security patterns focus on securing the cluster and applications within Kubernetes.
+## 5. Advanced Patterns
+These patterns are geared towards more sophisticated use cases and deployment scenarios, such as optimizing resource usage and scaling dynamically.
 
-- **Pod Security Policy (PSP) Pattern**: Defines policies for pod security, restricting what actions a pod can perform, such as limiting root access, controlling network access, and specifying security contexts.
-- **Network Policy Pattern**: Restricts network communication between pods and namespaces, defining access controls to enhance security by controlling the flow of traffic within the cluster.
-- **Service Account Pattern**: Uses service accounts to provide a unique identity to different components or applications, allowing for fine-grained access control for Kubernetes resources.
+- **Autoscaling:** Leveraging Horizontal Pod Autoscaler and Vertical Pod Autoscaler for dynamic scaling based on load.
+- **Stateful Services:** Managing stateful applications with StatefulSets for predictable identities and storage management.
+- **Operator:** Using custom controllers (Operators) to extend Kubernetes' API for managing complex applications (e.g., databases).
+- **Multi-Cluster Deployment:** Coordinating deployments across multiple Kubernetes clusters for redundancy and global reach.
 
-## 6. Availability Patterns
-These patterns are designed to ensure applications remain available and resilient to failures.
+## 6. Observability Patterns
+Observability patterns provide strategies for monitoring, logging, and tracing applications on Kubernetes.
 
-- **ReplicaSet Pattern**: Ensures a specified number of pod replicas are running at all times, automatically scaling up or down as needed.
-- **Pod Disruption Budget (PDB) Pattern**: Sets policies to control the number of disruptions a service can tolerate, such as during maintenance, to maintain availability.
-- **Health Check (Liveness/Readiness) Pattern**: Uses probes to ensure application health by restarting containers if they become unresponsive or marking them as unavailable for traffic, ensuring reliability.
+- **Log Aggregation:** Centralizing and managing logs using tools like Fluentd and Elasticsearch.
+- **Metrics Collection:** Gathering application and cluster metrics with Prometheus or other monitoring tools.
+- **Distributed Tracing:** Implementing tracing across services for visibility into distributed transactions (e.g., with Jaeger or OpenTracing).
+- **Health Monitoring:** Using Kubernetes health checks alongside external monitoring solutions for comprehensive system health.
 
-## 7. Observability Patterns
-These patterns are aimed at monitoring, logging, and gathering metrics from applications for enhanced observability.
 
-- **Logging Sidecar Pattern**: Adds a logging container to the pod that collects, processes, and sends logs from the main application container, improving visibility without altering the application code.
-- **Telemetry Sidecar Pattern**: Similar to logging, this pattern involves adding a sidecar to collect metrics, tracing, and other observability data to help monitor application performance.
-- **Exporter Pattern**: Exposes metrics for applications that don’t natively support metrics endpoints, allowing for integration with monitoring tools like Prometheus.
+```mermaid
+flowchart TD
+A[Foundational Patterns]
+B[Behavioral Patterns]
+C[Structural Patterns]
+D[Configuration Patterns]
+E[Advanced Patterns]
+F[Observability Patterns]
+
+%% Foundational Patterns
+A1[Predictable Demands]
+A2[Declarative Deployment]
+A3[Self-Healing]
+A4[Automated Scheduling]
+
+A --> A1
+A --> A2
+A --> A3
+A --> A4
+
+%% Behavioral Patterns
+B1[Health Probe]
+B2[Predictable Scheduling]
+B3[Managed Lifecycle]
+B4[Configuration Resource]
+B5[Resource Management]
+
+B --> B1
+B --> B2
+B --> B3
+B --> B4
+B --> B5
+
+%% Structural Patterns
+C1[Sidecar]
+C2[Adapter]
+C3[Ambassador]
+C4[Init Container]
+C5[Leader Election]
+
+C --> C1
+C --> C2
+C --> C3
+C --> C4
+C --> C5
+
+%% Configuration Patterns
+D1[Configuration Resource]
+D2[Environment Variable Configuration]
+D3[Configuration Template]
+
+D --> D1
+D --> D2
+D --> D3
+
+%% Advanced Patterns
+E1[Autoscaling]
+E2[Stateful Services]
+E3[Operator]
+E4[Multi-Cluster Deployment]
+
+E --> E1
+E --> E2
+E --> E3
+E --> E4
+
+%% Observability Patterns
+F1[Log Aggregation]
+F2[Metrics Collection]
+F3[Distributed Tracing]
+F4[Health Monitoring]
+
+F --> F1
+F --> F2
+F --> F3
+F --> F4
+```
