@@ -22,45 +22,7 @@ The **Secrets Store CSI Driver** integrates with Kubernetes to mount secrets sto
 
 ---
 
-## 2. **Azure Managed Identity for Kubernetes Pods**
-
-### How it works:
-**Managed Identity** allows Kubernetes workloads (pods or nodes) to authenticate with **Azure Key Vault** using Azure's identity-based security model. This eliminates the need for storing credentials inside Kubernetes, as Azure AD handles the authentication.
-
-### Advantages:
-- **No Secrets in Kubernetes**: Managed identities eliminate the need to store sensitive information, such as secrets or credentials, inside the Kubernetes cluster.
-- **Seamless Integration with Azure**: Kubernetes workloads can authenticate with Azure services using Azure Active Directory, ensuring consistent identity management.
-- **Enhanced Security**: Secrets are only accessed when needed, and there's no need for manual rotation of credentials. This helps improve the overall security posture.
-- **Cost and Complexity Reduction**: Since you don't need to manage or rotate secrets inside Kubernetes, it can reduce operational overhead.
-
-### Disadvantages:
-- **Azure-Specific**: This solution is specific to Azure, so it doesn’t work in a multi-cloud environment unless managed identities are supported across clouds.
-- **Requires Azure Identity Setup**: Setting up **Azure Managed Identity** requires configuring Azure AD, roles, and permissions for the Kubernetes cluster, which adds an extra step in the setup process.
-- **Limited to Azure Services**: While managed identities are great for Azure resources, they cannot be used to access resources outside the Azure ecosystem without additional configuration or bridging services.
-- **Requires Azure Identity Operator**: For pod-based managed identity, you need to install and configure the **Azure Identity Operator**, which adds complexity.
-
----
-
-## 3. **Kubernetes Secrets with Azure Key Vault Integration (AKS)**
-
-### How it works:
-**Azure Key Vault to Kubernetes Secrets** syncs secrets from **Azure Key Vault** directly into Kubernetes secrets. Once synced, Kubernetes manages the secrets using its native mechanisms (e.g., `kubectl` and the Kubernetes API), and your pods can access the secrets in a more Kubernetes-native way.
-
-### Advantages:
-- **Simple Kubernetes Native Solution**: Integrating Azure Key Vault with Kubernetes Secrets allows you to use native Kubernetes constructs like Secrets, ConfigMaps, and `kubectl`.
-- **Centralized Management**: Azure Key Vault continues to be the single source of truth for secret management, with Kubernetes handling the injection and access control.
-- **Automated Secret Synchronization**: Azure can automatically sync Key Vault secrets with Kubernetes secrets, reducing manual configuration errors.
-- **Managed by AKS**: In the case of AKS, Azure manages the integration, which reduces setup complexity.
-
-### Disadvantages:
-- **Sync Latency**: Syncing secrets from Azure Key Vault to Kubernetes secrets may have a delay (usually seconds), depending on the sync frequency and network performance.
-- **Not Real-Time**: Changes to secrets in Azure Key Vault won’t be immediately reflected in the Kubernetes Secrets; this could pose a challenge for use cases requiring real-time access to updated secrets.
-- **Kubernetes Secrets Management**: Even though secrets are managed within Kubernetes, they are still stored in etcd (Kubernetes' backing store), which requires careful access control and encryption.
-- **Requires AKS for Full Integration**: This solution is easier to implement on **Azure Kubernetes Service (AKS)**. On other Kubernetes platforms, you may need additional configuration.
-
----
-
-## 4. **Azure AD Workload Identity for Azure Kubernetes Service (AKS)**
+## 2. **Azure AD Workload Identity for Azure Kubernetes Service (AKS)**
 
 ### How it works:
 **Azure AD Workload Identity** allows Kubernetes workloads (pods) to authenticate using Azure AD identities to securely access Azure resources like **Azure Key Vault**. The Kubernetes pod is granted an Azure identity, which it uses to authenticate to Azure Key Vault.
@@ -83,8 +45,6 @@ The **Secrets Store CSI Driver** integrates with Kubernetes to mount secrets sto
 | Method                               | Key Features                                      | Advantages                                        | Disadvantages                                    |
 |--------------------------------------|---------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
 | **Azure Key Vault + Secrets Store CSI Driver** | Mount secrets into pods as files or env variables. | Native Kubernetes integration, flexible.         | Complex setup, performance overhead, IAM complexity. |
-| **Azure Managed Identity**           | Use Azure identity to authenticate directly to Azure services. | No secrets in Kubernetes, secure, seamless Azure integration. | Requires Azure AD configuration, Azure-only solution, limited multi-cloud support. |
-| **Azure Key Vault + AKS Integration** | Sync secrets from Key Vault into Kubernetes secrets. | Kubernetes-native, managed by AKS.               | Sync delay, Kubernetes secrets in etcd, latency. |
 | **Azure AD Workload Identity**       | Authenticate with Azure AD for resource access.   | Secure, granular permissions, reduced complexity. | Azure-only solution, requires AD setup, AKS-centric. |
 
 ---
@@ -92,12 +52,9 @@ The **Secrets Store CSI Driver** integrates with Kubernetes to mount secrets sto
 ## Conclusion
 
 - **Azure Key Vault + Secrets Store CSI Driver**: Best for when you need direct integration between Azure Key Vault and Kubernetes, especially if you require more flexible mounting options for your secrets (either as environment variables or files).
-- **Azure Managed Identity**: Ideal for environments where security is a top priority, and you want to avoid managing credentials directly. This solution is excellent for simplifying the management of authentication between Kubernetes workloads and Azure resources.
-- **Azure Key Vault + AKS Integration**: A solid choice for **Azure Kubernetes Service (AKS)** users who want to sync secrets from Key Vault to Kubernetes. While simple, it may have some limitations in sync frequency and latency.
 - **Azure AD Workload Identity**: A highly secure and Azure-native solution for accessing resources with granular identity management, especially for AKS users, though it can be more complex to configure.
 
-Each solution has trade-offs depending on your requirements around security, complexity, and multi-cloud compatibility. For most **Azure-centric** Kubernetes workloads, **Azure Managed Identity** or **Azure AD Workload Identity** may be the most secure and scalable options, while **Secrets Store CSI Driver** offers the flexibility for integrating complex secret management workflows.
-
+---
 
 # AWS Secrets Management in Kubernetes: Methods and Comparison
 
@@ -212,6 +169,7 @@ You can use **IAM roles for pods** in **EKS** to grant Kubernetes workloads acce
 
 The best choice for your use case depends on factors like the scale of your deployment, security requirements, and how tightly coupled you are to AWS services. **Secrets Store CSI Driver** and **IRSA** are strong solutions for AWS-based environments, providing secure and flexible secret management.
 
+---
 
 # HashiCorp Vault for Secrets Management in Kubernetes: Methods and Comparison
 
