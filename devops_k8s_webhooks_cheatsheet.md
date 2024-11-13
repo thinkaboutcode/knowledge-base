@@ -79,9 +79,39 @@ Both **Validating** and **Mutating Webhooks** are configured using **Admission W
 
 ---
 
+## Real-World Kubernetes Examples Using Webhooks
+
+Kubernetes uses **Validating** and **Mutating Webhooks** internally for various important tasks, including security, policy enforcement, and configuration management. Here are a few real-world examples:
+
+### 1. **Pod Security Policies (PSP)**
+- **Use Case**: The **PodSecurityPolicy** admission controller uses validating webhooks to ensure that Pods comply with security policies before being created or updated. For example, a policy might prevent Pods from running as root, or enforce the use of read-only file systems for certain containers.
+- **How it works**: When a user attempts to create or modify a Pod, the PSP webhook validates whether the Pod meets the defined security requirements. If the Pod does not comply, the request is rejected.
+
+### 2. **Resource Limits and Requests Enforcement**
+- **Use Case**: Kubernetes can use a mutating webhook to automatically inject resource requests and limits into Pods that do not specify them. This helps enforce a consistent resource management strategy across a cluster.
+- **How it works**: If a Pod does not have memory or CPU limits defined, a mutating webhook can automatically add a default resource limit to the container configuration, ensuring that the Pod runs within the cluster's resource constraints.
+
+### 3. **Namespace Resource Quotas**
+- **Use Case**: Kubernetes uses validating webhooks to enforce **resource quotas** at the namespace level, ensuring that a given namespace does not exceed its resource allocation for certain resources like CPU, memory, or storage.
+- **How it works**: When creating resources like Pods or Services, the validating webhook checks the requested resources against the configured quotas for the namespace. If the request exceeds the quota, it is rejected.
+
+### 4. **Image Validation and Policy Enforcement**
+- **Use Case**: Kubernetes can use validating webhooks to enforce security policies around container images, such as requiring that only images from trusted registries are used.
+- **How it works**: The validating webhook inspects the image references in the resource definitions. If the image does not come from a trusted registry (e.g., Docker Hub or a private registry with a signature), the webhook denies the resource creation.
+
+### 5. **Automatic Sidecar Injection**
+- **Use Case**: Many service meshes, such as **Istio**, use mutating webhooks to automatically inject sidecar containers (e.g., Envoy proxies) into Pods.
+- **How it works**: When a new Pod is created, the mutating webhook detects that the application container does not have a sidecar. The webhook then injects the sidecar container configuration before the Pod is created, ensuring that the sidecar is deployed alongside the application container for traffic management and observability.
+
+### 6. **Defaulting Labels and Annotations**
+- **Use Case**: To ensure that resources are consistently labeled and annotated for tracking or categorization purposes, a mutating webhook can automatically add default labels or annotations to resources like Pods, Deployments, and Services.
+- **How it works**: If a Pod is created without the required labels (e.g., `app`, `env`, `team`), the mutating webhook injects them automatically, helping to maintain a consistent labeling strategy across all resources.
+
+---
+
 ## Conclusion
 
 - **Validating Webhooks** are primarily used for **validation**, ensuring that incoming requests conform to required policies before being accepted.
 - **Mutating Webhooks** are used to **mutate** or modify requests before they are persisted, allowing you to automatically modify or enhance resources based on specific needs.
 
-Together, these webhooks provide a powerful way to enforce policies, automate configuration tasks, and ensure the security and integrity of Kubernetes clusters.
+Together, these webhooks provide a powerful way to enforce policies, automate configuration tasks, and ensure the security and integrity of Kubernetes clusters. Kubernetes itself uses these mechanisms in several important ways, from security policies to automatic configuration, making them essential for managing resources effectively in a production environment.
