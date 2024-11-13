@@ -4,7 +4,7 @@ https://github.com/k8spatterns/examples
 
 ```mermaid
 mindmap
-  root
+  Kubernetes Patterns
     Foundational Patterns
       Predictable Demands
       Declarative Deployment
