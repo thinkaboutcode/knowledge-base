@@ -27,7 +27,7 @@ classDiagram
         +String name
         +String capacity
         +String accessModes
-        +String storageClass
+        +StorageClass storageClass
         +String reclaimPolicy
     }
 
@@ -35,7 +35,14 @@ classDiagram
         +String name
         +String storageRequest
         +String accessModes
-        +String storageClass
+        +StorageClass storageClass
+    }
+
+    class StorageClass {
+        +String name
+        +String provisioner
+        +String parameters
+        +String reclaimPolicy
     }
 
     class Service {
@@ -139,11 +146,23 @@ classDiagram
         +String name
         +Secret[] secrets
         +Role[] roles
+        +ClusterRole[] clusterRoles
     }
 
     class Role {
         +String name
         +String[] permissions
+    }
+
+    class ClusterRole {
+        +String name
+        +String[] clusterPermissions
+    }
+
+    class ClusterRoleBinding {
+        +String name
+        +ClusterRole role
+        +String[] subjects
     }
 
     class Port {
@@ -162,7 +181,7 @@ classDiagram
 
     class VolumeClaim {
         +String name
-        +String storageClass
+        +StorageClass storageClass
         +String accessModes
     }
 
@@ -191,7 +210,10 @@ classDiagram
     Namespace "1" --> "0..*" Secret : contains
     Namespace "1" --> "0..*" Ingress : contains
     ServiceAccount "1" --> "0..*" Secret : uses
-    ServiceAccount "1" --> "0..*" Role : assigned
+    ServiceAccount "1" --> "0..*" Role : uses
+    ServiceAccount "1" --> "0..*" ClusterRole : uses
+    ClusterRoleBinding "1" --> "1" ClusterRole : bindsTo
+    ClusterRoleBinding "1" --> "0..*" ServiceAccount : subjects
     Pod "0..*" --> "0..1" ServiceAccount : uses
     Ingress "1" --> "0..*" IngressRule : defines
     IngressRule "1" --> "1" Service : backend
@@ -201,5 +223,8 @@ classDiagram
     PodTemplateSpec "1" --> "0..*" Volume : defines
     PersistentVolume "1" --> "0..*" PersistentVolumeClaim : boundBy
     PersistentVolumeClaim "1" --> "0..*" Pod : mounts
-    PersistentVolumeClaim "1" --> "0..1" Volume : claims
+    PersistentVolumeClaim "1" --> "1" StorageClass : provisionedBy
+    PersistentVolume "1" --> "1" StorageClass : provisionedBy
+    StorageClass "1" --> "0..*" PersistentVolume : provisions
+    StorageClass "1" --> "0..*" PersistentVolumeClaim : claims
 ```
