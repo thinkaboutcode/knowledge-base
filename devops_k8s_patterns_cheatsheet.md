@@ -2,6 +2,42 @@
 
 https://github.com/k8spatterns/examples
 
+```mermaid
+mindmap
+  root
+    Foundational Patterns
+      Predictable Demands
+      Declarative Deployment
+      Self-Healing
+      Automated Scheduling
+    Behavioral Patterns
+      Health Probe
+      Predictable Scheduling
+      Managed Lifecycle
+      Configuration Resource
+      Resource Management
+    Structural Patterns
+      Sidecar
+      Adapter
+      Ambassador
+      Init Container
+      Leader Election
+    Configuration Patterns
+      Configuration Resource
+      Environment Variable Configuration
+      Configuration Template
+    Advanced Patterns
+      Autoscaling
+      Stateful Services
+      Operator
+      Multi-Cluster Deployment
+    Observability Patterns
+      Log Aggregation
+      Metrics Collection
+      Distributed Tracing
+      Health Monitoring
+```
+
 ## 1. Foundational Patterns
 Foundational patterns are essential constructs that help set up the base for deploying applications on Kubernetes.
 
@@ -51,81 +87,3 @@ Observability patterns provide strategies for monitoring, logging, and tracing a
 - **Distributed Tracing:** Implementing tracing across services for visibility into distributed transactions (e.g., with Jaeger or OpenTracing).
 - **Health Monitoring:** Using Kubernetes health checks alongside external monitoring solutions for comprehensive system health.
 
-
-```mermaid
-flowchart TD
-A[Foundational Patterns]
-B[Behavioral Patterns]
-C[Structural Patterns]
-D[Configuration Patterns]
-E[Advanced Patterns]
-F[Observability Patterns]
-
-%% Foundational Patterns
-A1[Predictable Demands]
-A2[Declarative Deployment]
-A3[Self-Healing]
-A4[Automated Scheduling]
-
-A --> A1
-A --> A2
-A --> A3
-A --> A4
-
-%% Behavioral Patterns
-B1[Health Probe]
-B2[Predictable Scheduling]
-B3[Managed Lifecycle]
-B4[Configuration Resource]
-B5[Resource Management]
-
-B --> B1
-B --> B2
-B --> B3
-B --> B4
-B --> B5
-
-%% Structural Patterns
-C1[Sidecar]
-C2[Adapter]
-C3[Ambassador]
-C4[Init Container]
-C5[Leader Election]
-
-C --> C1
-C --> C2
-C --> C3
-C --> C4
-C --> C5
-
-%% Configuration Patterns
-D1[Configuration Resource]
-D2[Environment Variable Configuration]
-D3[Configuration Template]
-
-D --> D1
-D --> D2
-D --> D3
-
-%% Advanced Patterns
-E1[Autoscaling]
-E2[Stateful Services]
-E3[Operator]
-E4[Multi-Cluster Deployment]
-
-E --> E1
-E --> E2
-E --> E3
-E --> E4
-
-%% Observability Patterns
-F1[Log Aggregation]
-F2[Metrics Collection]
-F3[Distributed Tracing]
-F4[Health Monitoring]
-
-F --> F1
-F --> F2
-F --> F3
-F --> F4
-```
