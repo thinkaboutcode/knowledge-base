@@ -1,3 +1,4 @@
+```mermaid
 architecture-beta
 group mlops_pipeline(logos:aws-lambda)[ML Ops Pipeline]
 
@@ -17,3 +18,5 @@ group mlops_pipeline(logos:aws-lambda)[ML Ops Pipeline]
     model_training:T -- B:model_registry
     model_registry:T -- B:inference_endpoint
     inference_endpoint:T -- B:api_gateway
+```
+
