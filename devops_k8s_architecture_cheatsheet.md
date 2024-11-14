@@ -1,6 +1,11 @@
 ```mermaid
 flowchart TD
 
+    subgraph External [External]
+        kubectl
+        helm
+    end
+
     subgraph Group1 [Control Plane]
         kube-apiserver
         kube-scheduler
@@ -17,7 +22,10 @@ flowchart TD
         container
     end
 
+    kubectl --> kube-apiserver
+    helm --> kube-apiserver
     kube-apiserver <--> kube-scheduler
+    kube-apiserver --> etcd
     kube-scheduler --> etcd
     kube-controller-manager --> kube-apiserver
     cloud-controller-manager <--> kube-apiserver
