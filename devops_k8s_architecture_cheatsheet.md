@@ -1,67 +1,101 @@
 ```mermaid
-graph TD
+classDiagram
 
-    subgraph Kubernetes Cluster
-        subgraph Control_Plane [Control Plane]
-            API_Server["API Server (kube-apiserver)"]
-            Scheduler["Scheduler (kube-scheduler)"]
-            Controller_Manager["Controller Manager (kube-controller-manager)"]
-            etcd["etcd (Key-Value Store)"]
-            Cloud_Controller_Manager["Cloud Controller Manager (Optional)"]
-            
-            API_Server --> Scheduler
-            API_Server --> Controller_Manager
-            API_Server --> etcd
-            API_Server --> Cloud_Controller_Manager
-        end
+    %% Control Plane Components
+    class ControlPlane {
+        +API Server
+        +Scheduler
+        +Controller Manager
+        +etcd
+        +Cloud Controller Manager (optional)
+    }
+    
+    ControlPlane : +Manages Nodes
+    ControlPlane : +Orchestrates Pods
+    ControlPlane : +Stores State in etcd
+    ControlPlane : +Schedules Pods
+    
+    class APIServer {
+        +Validates Requests
+        +Communicates with etcd
+        +Central API Gateway
+    }
+    
+    class Scheduler {
+        +Assigns Pods to Nodes
+        +Considers Resource Constraints
+    }
+    
+    class ControllerManager {
+        +Node Controller
+        +Replication Controller
+        +Endpoint Controller
+        +Service Account Controller
+    }
 
-        subgraph Node_1 [Node 1]
-            kubelet_1["kubelet"]
-            container_runtime_1["Container Runtime"]
-            kube_proxy_1["kube-proxy"]
-            pod1["Pod 1"]
-            pod2["Pod 2"]
+    class etcd {
+        +Key-Value Store
+        +Stores Cluster State
+        +Highly Available
+    }
 
-            kubelet_1 --> pod1
-            kubelet_1 --> pod2
-            kubelet_1 --> container_runtime_1
-            kubelet_1 --> kube_proxy_1
-        end
+    class CloudControllerManager {
+        +Handles Cloud Integrations
+        +Manages Cloud Resources
+    }
 
-        subgraph Node_2 [Node 2]
-            kubelet_2["kubelet"]
-            container_runtime_2["Container Runtime"]
-            kube_proxy_2["kube-proxy"]
-            pod3["Pod 3"]
-            pod4["Pod 4"]
+    %% Node Components
+    class Node {
+        +kubelet
+        +Container Runtime
+        +kube-proxy
+    }
+    
+    Node : +Hosts Pods
+    Node : +Interacts with Control Plane
+    Node : +Manages Networking (kube-proxy)
+    
+    class Kubelet {
+        +Monitors Pod Status
+        +Interacts with Control Plane
+        +Manages Local Pods
+    }
+    
+    class ContainerRuntime {
+        +Runs Containers
+        +Pulls Images
+        +Manages Container Lifecycle
+    }
 
-            kubelet_2 --> pod3
-            kubelet_2 --> pod4
-            kubelet_2 --> container_runtime_2
-            kubelet_2 --> kube_proxy_2
-        end
+    class KubeProxy {
+        +Manages Network Rules
+        +Directs Traffic to Pods
+    }
 
-        subgraph Node_N [Node N]
-            kubelet_N["kubelet"]
-            container_runtime_N["Container Runtime"]
-            kube_proxy_N["kube-proxy"]
-            podN["Pod N"]
+    %% Pod Class
+    class Pod {
+        +Multiple Containers
+        +Networking and Storage
+        +Unit of Deployment
+    }
 
-            kubelet_N --> podN
-            kubelet_N --> container_runtime_N
-            kubelet_N --> kube_proxy_N
-        end
+    %% Relationships
+    ControlPlane o-- APIServer
+    ControlPlane o-- Scheduler
+    ControlPlane o-- ControllerManager
+    ControlPlane o-- etcd
+    ControlPlane o-- CloudControllerManager
 
-        %% Connections between control plane and nodes
-        API_Server --> kubelet_1
-        API_Server --> kubelet_2
-        API_Server --> kubelet_N
-
-    end
-
-    %% Labels
-    Control_Plane -->|Manages| Node_1
-    Control_Plane -->|Manages| Node_2
-    Control_Plane -->|Manages| Node_N
-
+    Node o-- Kubelet
+    Node o-- ContainerRuntime
+    Node o-- KubeProxy
+    Node o-- Pod
+    
+    APIServer <-- Kubelet : API Requests
+    etcd <-- APIServer : Stores State
+    Scheduler <-- APIServer : Scheduling Requests
+    ControllerManager <-- APIServer : Manages Cluster State
+    CloudControllerManager <-- APIServer : Optional Cloud Requests
+    KubeProxy <-- Node : Manages Network Rules
+    ContainerRuntime <-- Node : Runs Containers
 ```
