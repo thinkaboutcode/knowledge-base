@@ -1,3 +1,5 @@
+# Overview of k8s Architecture
+
 ```mermaid
 flowchart TD
 
@@ -33,6 +35,18 @@ flowchart TD
     kubelet --> container-runtime --> container
     kube-proxy --> kube-apiserver
     kube-proxy --> container
+```
+
+## Exmample of executing a kubectl command
+```mermaid
+flowchart TD
+    A[kubectl command] --> B[kube-apiserver]
+    B --> C[Validate & Store in etcd]
+    C --> D[Controller Manager]
+    D --> E[Kube Scheduler]
+    E --> F[Kubelet]
+    F --> G[Container Running]
+    G --> H[Kube Proxy]
 ```
 
 # Overview of the Kubernetes Control Plane
