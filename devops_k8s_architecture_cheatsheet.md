@@ -17,12 +17,14 @@ flowchart TD
         container
     end
 
-    kube-apiserver --> kube-scheduler
+    kube-apiserver <--> kube-scheduler
     kube-scheduler --> etcd
     kube-controller-manager --> kube-apiserver
+    cloud-controller-manager <--> kube-apiserver
     kube-apiserver --> kubelet
     kubelet --> container-runtime --> container
-    kube-proxy --> kube-apiserver 
+    kube-proxy --> kube-apiserver
+    kube-proxy --> container
 ```
 
 # Overview of the Kubernetes Control Plane
