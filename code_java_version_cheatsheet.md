@@ -66,6 +66,30 @@ The **record pattern** is a feature introduced in **Java 21** as part of the Pro
 
 This feature is part of a broader set of improvements in pattern matching in Java, including **instanceof**, **switch expressions**, and other advanced matching capabilities.
 
+```java
+public record Person(String name, int age) {}
+
+public class RecordPatternExample {
+  public static void main(String[] args) {
+    Person person1 = new Person("Alice", 30);
+    Person person2 = new Person("Bob", 25);
+
+    // Using a switch with record patterns
+    printPersonInfo(person1);
+    printPersonInfo(person2);
+  }
+
+  public static void printPersonInfo(Object obj) {
+    switch (obj) {
+      case Person(String name, int age) ->
+              System.out.println(name + " is " + age + " years old.");
+      default ->
+              System.out.println("Not a person.");
+    }
+  }
+}
+```
+
 #### Virtual Threads
 [Check this for more info](code_java_virtual_threads_cheatsheet.md) 
 
@@ -119,8 +143,6 @@ public class SequencedCollectionExample {
   }
 }
 ```
-
-
 
 ## Java 20 (March 2023)
 - **Record Patterns (Preview)**: Allows destructuring of records in a more intuitive way.
