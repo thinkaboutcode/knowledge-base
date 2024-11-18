@@ -367,6 +367,7 @@ Java **records** offer a built-in solution for creating immutable data classes i
 - **Hidden Classes**: Supports hidden classes that can be used by frameworks for better runtime performance.
 - **ZGC (Z Garbage Collector)**: Experimental low-latency garbage collector to handle large heaps efficiently.
 
+
 ## Java 14 (March 2020)
 - **JEP 358: Helpful NullPointerException**: Improves `NullPointerException` messages by providing more context about the error.
 - **JEP 359: Records (Preview)**: Introduces records, a new kind of type to model immutable data.
@@ -418,31 +419,235 @@ String json = """
                """;
 ```
 
+### Dynamic CDS
+
+**Dynamic CDS (Class Data Sharing) Archives** were introduced to enhance startup time and reduce memory footprint by allowing the JVM to share class data across multiple Java processes. Instead of pre-generating class metadata during JDK build or application packaging, Dynamic CDS Archives are created at runtime, providing more flexibility.
+
+#### Key Steps for Using Dynamic CDS Archives:
+1. **Generate the CDS Archive**:
+   You generate the dynamic CDS archive by running a Java application with the `-Xshare:dump` option. This step collects the class data for classes that are loaded during the execution of the application.
+
+2. **Run the Application with the CDS Archive**:
+   Once the archive is generated, you run your Java application with the `-Xshare:auto` or `-Xshare:on` option. This instructs the JVM to use the generated CDS archive, which can improve startup time and reduce memory usage by loading the shared class data from the archive.
+
+3. **Verify the CDS Archive**:
+   You can verify that the CDS archive is being used by checking the JVM startup logs or using the `-verbose:class` option, which will show which classes are being loaded and whether they are loaded from the CDS archive.
+
+#### Benefits of Dynamic CDS Archives:
+- **Faster Startup Time**: By reusing class data, the JVM can start applications more quickly.
+- **Reduced Memory Footprint**: Multiple JVM processes can share the same class data, reducing overall memory usage.
+- **Dynamic Class Loading**: The archive is created based on the classes that are actually used at runtime, offering flexibility compared to static archives.
+
+#### Conclusion:
+Dynamic CDS Archives in Java 12 provide a mechanism to improve the performance of Java applications by sharing class metadata at runtime, leading to faster startup and reduced memory consumption.
+
+
 ## Java 12 (March 2019)
 - **JEP 189: Shenandoah GC (Garbage Collector)**: Experimental low-latency garbage collector that reduces GC pause times.
 - **JEP 230: Microbenchmarking Support**: Improves the JVM's capabilities for benchmarking code reliably.
 - **JEP 325: Switch Expressions (Standard)**: Switch expressions were officially made a standard feature, enhancing the expressiveness and usability of the switch statement.
+
+### Switch Expressions
+
+### Key Features of Switch Expressions:
+- **Return Values**: You can now return a value from a `switch` expression.
+- **Arrow (`->`) Syntax**: The new syntax uses the `->` arrow instead of the `:` colon.
+- **Multiple Labels**: Multiple labels can be grouped together to avoid code repetition.
+- **`yield` Statement**: When returning a value, use the `yield` keyword.
+
+```java
+public class SwitchExpressionExample {
+    public static void main(String[] args) {
+        String day = "Monday";
+        
+        // Using switch expression to get the type of day
+        String result = switch (day) {
+            case "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" -> "Weekday";
+            case "Saturday", "Sunday" -> "Weekend";
+            default -> throw new IllegalArgumentException("Invalid day: " + day);
+        };
+        
+        System.out.println(result);  // Outputs: Weekday
+    }
+}
+
+public class SwitchExpressionWithYield {
+  public static void main(String[] args) {
+    int dayOfWeek = 3; // Let's assume 1=Sunday, 2=Monday, ..., 7=Saturday
+
+    // Using switch expression with yield
+    String result = switch (dayOfWeek) {
+      case 1 -> {
+        System.out.println("It's Sunday!");
+        yield "Weekend";
+      }
+      case 2, 3, 4, 5, 6 -> {
+        System.out.println("It's a weekday!");
+        yield "Weekday";
+      }
+      case 7 -> {
+        System.out.println("It's Saturday!");
+        yield "Weekend";
+      }
+      default -> throw new IllegalArgumentException("Invalid day number: " + dayOfWeek);
+    };
+
+    System.out.println(result);  // Output: "It's a weekday!" followed by "Weekday"
+  }
+}
+
+
+```
 
 ## Java 11 (September 2018 - LTS)
 - **Local-Variable Syntax for Lambda Parameters**: Adds the ability to use `var` in lambda parameters.
 - **Epsilon Garbage Collector**: A no-op garbage collector designed for performance testing.
 - **JEP 321: HTTP Client**: Introduces a new standard HTTP client for making HTTP requests with better performance and features.
 
+### Local-Variable Syntax for Lambda Parameters
+
+**Local-Variable Syntax for Lambda Parameters** allows you to use **`var`** for lambda parameters. This feature simplifies the lambda syntax by enabling the automatic inference of the parameter type, eliminating the need for explicit type declarations.
+
+### Benefits:
+- **Simplified Syntax**: Using `var` reduces the amount of boilerplate code, especially when the type is obvious or easily inferred.
+- **Consistency**: It provides a more consistent syntax by aligning with the `var` keyword used for local variables, making the code cleaner and more uniform.
+
+### Conclusion:
+Local-variable syntax for lambda parameters, introduced in Java 11, enables the use of `var` in lambda expressions, which simplifies the syntax, making the code more concise while maintaining type safety.
+
+
+```java
+import java.util.List;
+
+public class LocalVariableSyntaxForLambdaParameters {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie");
+
+        // Lambda expression with explicit types
+        names.forEach((String name) -> {
+            System.out.println(name);
+        });
+
+        // Lambda expression with var (local-variable syntax)
+        names.forEach((var name) -> {
+            System.out.println(name);
+        });
+    }
+}
+```
+
 ## Java 10 (March 2018)
 - **Local-Variable Type Inference**: Introduces the `var` keyword to allow local variable type inference.
 - **G1 Garbage Collector Improvements**: Improves the performance of the G1 garbage collector.
 - **JEP 286: Switch Expressions (Preview)**: Introduces switch expressions to enhance the switch statement with more flexibility and conciseness.
+
+### Local-Variable Type Inference
+
+This feature allows the compiler to automatically infer the type of a local variable based on the value assigned to it, eliminating the need for explicit type declarations.
+
+### Important Notes:
+- **Initialization Required**: A variable declared with `var` must be initialized at the time of declaration. The type is inferred from this initialization.
+- **Cannot Be Used for Fields, Method Parameters, or Return Types**: The `var` keyword can only be used for local variables within methods. It cannot be used for fields, method parameters, or return types.
+- **Type Safety**: The type inferred is fixed, ensuring that type safety is maintained throughout the program.
+
+### Benefits:
+- **Reduced Boilerplate**: It eliminates the need for repeated type declarations, making the code more concise and cleaner.
+- **Enhanced Readability**: The focus is shifted from types to logic, improving the overall readability of the code.
+- **Increased Flexibility**: Especially useful when the type is obvious from the context, such as with complex generics or when working with collections.
+
+### Conclusion:
+Local-variable type inference, introduced in Java 10, simplifies variable declarations using the `var` keyword. This reduces verbosity and improves readability while ensuring type safety.
+
+
+```java
+String message = "Hello, World!";
+int number = 42;
+
+var message = "Hello, World!";  // Compiler infers the type as String
+var number = 42;                // Compiler infers the type as int
+
+```
 
 ## Java 9 (September 2017)
 - **Java Platform Module System (JPMS)**: Introduces the module system to allow for better modularization of the Java platform.
 - **JEP 201: Modular JDK**: Modifies the JDK itself to be modular, enabling developers to use only the parts of the JDK they need.
 - **JShell**: A Read-Eval-Print Loop (REPL) introduced for experimenting with Java code interactively.
 
+### Java Platform Module System
+
+**Java Platform Module System (JPMS)** was introduced in **Java 9** to provide a way to modularize Java applications, allowing developers to break down large applications into smaller, more manageable modules. This system enhances maintainability, security, and dependency management within Java applications.
+
+#### Key Features of JPMS:
+- **Modularization**: Allows you to divide a program into distinct modules, each with specific responsibilities.
+- **Encapsulation**: Modules control which classes and packages are accessible to other modules, keeping internal details private.
+- **Dependencies**: Modules can explicitly specify their dependencies on other modules, making the relationships between them clear.
+
+#### How JPMS Works:
+1. **Define a Module**: A module is defined using the `module-info.java` file, which is located at the root of the module’s source directory. This file specifies the module's name, its dependencies on other modules, and which packages are exported for use by other modules.
+
+2. **Create Classes in the Module**: Java classes are placed within the module and can be accessed by other modules if they are exported through the `module-info.java` file.
+
+3. **Dependencies Between Modules**: If one module depends on another, the dependent module will specify this relationship in its own `module-info.java` file using the `requires` keyword. This makes it clear which modules are required for the application to function.
+
+4. **Compiling and Running Modules**: Modules are compiled with `javac` and run with `java`, specifying the module path to indicate where the modules are located.
+
+#### Benefits of JPMS:
+- **Improved Modularity**: Break down large applications into smaller, well-defined modules, making it easier to manage dependencies and maintain the application.
+- **Strong Encapsulation**: By explicitly defining what is exported and what is internal, you can better control the visibility of classes and packages, improving security and reducing the risk of accidental misuse.
+- **Better Dependency Management**: Modules provide clear relationships between different parts of an application, making the application's structure more transparent and easier to navigate.
+
+#### Conclusion:
+The **Java Platform Module System (JPMS)**, introduced in Java 9, allows developers to modularize applications, improving the structure and organization of large codebases. By defining modules using the `module-info.java` file, Java applications can have better encapsulation, clearer dependencies, and improved maintainability.
+
+**Define a first module**
+```java
+// module-info.java
+module com.example.helloworld {
+  exports com.example.helloworld;
+  requires java.base; // Java base module is implicitly required, but this is explicit
+}
+```
+```java
+package com.example.helloworld;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java Modules!");
+    }
+}
+```
+
+**Create a second module**
+```java
+// module-info.java
+module com.example.application {
+  requires com.example.helloworld;
+}
+```
+Create a Class that uses the first module
+```java
+package com.example.application;
+
+import com.example.helloworld.HelloWorld;
+
+public class Application {
+    public static void main(String[] args) {
+        HelloWorld.main(args); // Accessing the HelloWorld class from the other module
+    }
+}
+```
+
 ## Java 8 (March 2014)
 - **Lambda Expressions**: Introduces lambdas for functional programming features, allowing cleaner and more concise code.
 - **Streams API**: Adds a new Stream API for working with sequences of data in a functional style.
 - **Default Methods**: Allows interfaces to have default methods with an implementation.
 - **java.time Package**: A new API for handling date and time, replacing the old `Date` and `Calendar` classes.
+
+### Lambda Expressions
+* [check this documentation for details](code_java_lambda_cheatsheet.md)
+
+### Streams API
+* [check this documentation for details](code_java_streams_cheatsheet.md)
 
 ## Java 7 (July 2011)
 - **Try-with-Resources**: Simplifies resource management by automatically closing resources like streams and connections.
