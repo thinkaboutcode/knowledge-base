@@ -310,6 +310,17 @@ This change encourages developers to move towards **modular and secure approache
 - **JEP 395: Strongly Encapsulate JDK Internals**: Ensures internal JDK APIs are fully encapsulated, increasing security.
 - **JEP 396: Strongly Encapsulate JDK Internals**: Further improvements to encapsulation of internal JDK APIs.
 
+### Java Records
+```java
+public record Person(String name, int age) { }
+```
+
+This record is automatically equipped with:
+
+- **A constructor** that takes `name` and `age` as parameters.
+- **Getters** for `name` and `age`.
+- **`toString()`**, **`equals()`**, and **`hashCode()`** methods.
+
 ### Java Records vs. Lombok
 
 Java's **records**, introduced in **Java 16**, share some functionality with the **Lombok** library, especially for creating data classes. Lombok has been popular for reducing boilerplate in Java with annotations, but records bring an alternative with differences in design and scope. Here’s a comparison:
