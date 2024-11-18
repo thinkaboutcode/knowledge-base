@@ -1,12 +1,42 @@
 # Overview of Recent Java Versions
 
-## Java 21 (September 2023)
-- **Pattern Matching for Switch (Preview)**: Extends pattern matching to switch expressions, improving code readability.
-- **Record Patterns (Preview)**: Simplifies destructuring of records and other data types, reducing boilerplate.
-- **Virtual Threads (Preview)**: Introduces lightweight threads, improving scalability and concurrency (Project Loom).
-- **Foreign Function & Memory API (Second Incubator)**: Enhances native code interaction, providing more control over memory management.
+## Java 21 (September 2023 - LTS)
+- **Pattern Matching for Switch**: Extends pattern matching to switch expressions, improving code readability.
+- **Record Patterns**: Simplifies destructuring of records and other data types, reducing boilerplate.
+- **Virtual Threads**: Introduces lightweight threads, improving scalability and concurrency (Project Loom).
+- **Foreign Function & Memory API (Third Preview)**: Enhances native code interaction, providing more control over memory management.
 - **Sequenced Collections**: New interfaces and collections that guarantee element ordering.
 
+### Pattern Matching for Switch
+```java
+public class PatternMatchingSwitchExample {
+
+    public static void main(String[] args) {
+        printObjectDetails("Hello, Java!");
+        printObjectDetails(42);
+        printObjectDetails(3.14);
+        printObjectDetails(new int[]{1, 2, 3});
+        printObjectDetails(null);
+    }
+
+    public static void printObjectDetails(Object obj) {
+        switch (obj) {
+            case String s -> 
+                System.out.println("It's a String with length: " + s.length());
+            case Integer i -> 
+                System.out.println("It's an Integer with value: " + i);
+            case Double d -> 
+                System.out.println("It's a Double with value: " + d);
+            case int[] arr -> 
+                System.out.println("It's an int array with length: " + arr.length);
+            case null -> 
+                System.out.println("It's null!");
+            default -> 
+                System.out.println("Unknown type: " + obj);
+        }
+    }
+}
+```
 
 ### Record Pattern in Java
 
@@ -36,6 +66,61 @@ The **record pattern** is a feature introduced in **Java 21** as part of the Pro
 
 This feature is part of a broader set of improvements in pattern matching in Java, including **instanceof**, **switch expressions**, and other advanced matching capabilities.
 
+#### Virtual Threads
+[Check this for more info](code_java_virtual_threads_cheatsheet.md) 
+
+#### Sequenced Collections
+
+Sequenced collections provide a more consistent way to handle collections that have an order, such as `List`, `Deque`, and `Set`. They allow you to access both the sequence (order of elements) and provide a consistent interface for operations like accessing elements by their index or iterating through the collection.
+
+In particular, sequenced collections introduce a new interface called `Sequenced` with methods like `first()`, `last()`, and `next()`, which can be used to access the first and last elements of a collection, among other things.
+
+#### Key Points:
+- **`List`** and **`Deque`** are examples of sequenced collections in Java 20.
+- **`first()`**: Returns the first element in the collection.
+- **`last()`**: Returns the last element in the collection.
+- **`forEach()`**: Standard method to iterate over all elements.
+
+#### Benefits of Sequenced Collections:
+1. **Consistency**: Provides consistent methods like `first()` and `last()` for accessing elements, regardless of the collection type.
+2. **Simplification**: Reduces the need to write custom code for common operations on ordered collections.
+3. **Extensibility**: Can be used with any collection that maintains an order (e.g., `List`, `Deque`, `Set`).
+
+Sequenced collections streamline handling ordered collections by providing a unified API for sequence-related operations.
+
+```java
+import java.util.*;
+
+public class SequencedCollectionExample {
+  public static void main(String[] args) {
+    // Create a List (Sequenced collection)
+    List<String> fruits = List.of("Apple", "Banana", "Cherry", "Date");
+
+    // Accessing the first and last elements using sequenced collection methods
+    System.out.println("First fruit: " + fruits.first());
+    System.out.println("Last fruit: " + fruits.last());
+
+    // Iterating through the sequenced collection
+    System.out.println("All fruits:");
+    fruits.forEach(System.out::println);
+
+    // Create a Deque (also a Sequenced collection)
+    Deque<String> vegetables = new ArrayDeque<>(List.of("Carrot", "Broccoli", "Spinach"));
+
+    // Accessing the first and last elements of the Deque
+    System.out.println("First vegetable: " + vegetables.first());
+    System.out.println("Last vegetable: " + vegetables.last());
+
+    // Adding and removing from the Deque
+    vegetables.addFirst("Cucumber");
+    vegetables.addLast("Potato");
+    System.out.println("Updated vegetables:");
+    vegetables.forEach(System.out::println);
+  }
+}
+```
+
+
 
 ## Java 20 (March 2023)
 - **Record Patterns (Preview)**: Allows destructuring of records in a more intuitive way.
@@ -61,6 +146,98 @@ This feature is part of a broader set of improvements in pattern matching in Jav
 - **Strong Encapsulation of JDK Internals**: Makes internal JDK APIs inaccessible by default for improved security.
 - **New macOS Rendering Pipeline**: Uses Apple's Metal API for improved graphics performance on macOS.
 - **JEP 411: Deprecate the Security Manager for Removal**: Signals the potential removal of the Security Manager.
+
+### Sealed Classes
+```java
+// File: Shape.java
+public sealed class Shape permits Circle, Rectangle, Triangle {
+    // Common properties or methods for all shapes
+    public abstract double area();
+}
+
+// File: Circle.java
+public final class Circle extends Shape {
+    private final double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// File: Rectangle.java
+public final class Rectangle extends Shape {
+    private final double width;
+    private final double height;
+
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    @Override
+    public double area() {
+        return width * height;
+    }
+}
+
+// File: Triangle.java
+public final class Triangle extends Shape {
+    private final double base;
+    private final double height;
+
+    public Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    @Override
+    public double area() {
+        return 0.5 * base * height;
+    }
+}
+```
+
+### Pattern Matching with instanceof
+```java
+public class InstanceOfPatternMatchingExample {
+    public static void main(String[] args) {
+        Object obj = "Hello, Pattern Matching!";
+
+        // Traditional instanceof with explicit casting
+        if (obj instanceof String) {
+            String str = (String) obj; // Explicit casting
+            System.out.println("String length: " + str.length());
+        }
+
+        // Modern instanceof with pattern matching
+        if (obj instanceof String str) { // Pattern matching
+            System.out.println("String length: " + str.length());
+        }
+
+        // Another example with different types
+        printObjectDetails(42);          // Integer
+        printObjectDetails(3.14);        // Double
+        printObjectDetails("Pattern!");  // String
+    }
+
+    public static void printObjectDetails(Object obj) {
+        if (obj instanceof Integer i) {
+            System.out.println("Integer value: " + i);
+        } else if (obj instanceof Double d) {
+            System.out.println("Double value: " + d);
+        } else if (obj instanceof String s) {
+            System.out.println("String value: " + s);
+        } else {
+            System.out.println("Unknown type: " + obj);
+        }
+    }
+}
+```
 
 ### Effect of "Strong Encapsulation of JDK Internals" on Existing Code
 
