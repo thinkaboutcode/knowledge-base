@@ -97,3 +97,55 @@ Supports centralized security management by enabling GuardDuty across multiple A
 ## **Conclusion**
 
 AWS GuardDuty is a powerful, easy-to-deploy service that enables organizations to enhance their security posture by providing continuous threat detection and actionable insights. Its seamless integration with other AWS security services, scalability, and advanced detection capabilities make it an essential tool for monitoring and protecting AWS workloads. By offloading complex security analysis to GuardDuty, organizations can focus on responding to threats and building secure applications.
+
+---
+
+# Amazon GuardDuty - Logs Analyzed by Default
+
+Amazon **GuardDuty** automatically analyzes a variety of AWS logs and data sources without requiring explicit configuration or enabling of additional logging. Below is a breakdown of the types of logs and data sources GuardDuty checks by default:
+
+## 1. **VPC Flow Logs**
+- **VPC Flow Logs** capture information about the IP traffic going to and from network interfaces in your VPC.
+- **GuardDuty** automatically analyzes these logs to detect anomalies in traffic patterns, such as port scanning, unusual inbound or outbound traffic, and suspicious IP addresses.
+- **No explicit enabling required**: GuardDuty integrates with VPC Flow Logs if they are already enabled for your VPC.
+
+## 2. **DNS Logs**
+- **Route 53 DNS Logs** provide information about DNS queries made within your AWS environment.
+- GuardDuty analyzes DNS logs to detect suspicious behavior like unusual domain name queries (e.g., queries to domains associated with malware or command-and-control servers).
+- **No explicit enabling required**: GuardDuty uses data from **Route 53 DNS queries** without the need for additional configuration.
+
+## 3. **CloudTrail Event Logs**
+- **AWS CloudTrail** records AWS API calls, including events that happen on your AWS account (e.g., resource changes, user actions, and service usage).
+- GuardDuty automatically analyzes **CloudTrail logs** to detect unusual or unauthorized API calls, such as attempts to escalate privileges, misconfigured access, or unexpected access to sensitive resources.
+- **CloudTrail is enabled by default** in all AWS accounts, so GuardDuty can analyze these logs as long as CloudTrail is active.
+
+## 4. **AWS CloudTrail S3 Data Events**
+- GuardDuty also analyzes **S3 data events** from CloudTrail, which capture detailed API requests for S3 objects.
+- This helps detect suspicious S3 access patterns, such as unexpected read or write activity from unusual IP addresses.
+- If **S3 data event logging** is enabled in CloudTrail, GuardDuty will automatically monitor them.
+
+## 5. **AWS Network Firewall Logs**
+- If you're using **AWS Network Firewall**, GuardDuty will analyze the logs produced by this service, which provide information about the traffic that's filtered by the firewall.
+- These logs provide insights into network traffic that is blocked or allowed based on firewall policies.
+- **No explicit configuration is needed** to enable GuardDuty to analyze these logs if firewall logs are available.
+
+---
+
+## How GuardDuty Uses These Logs:
+- **VPC Flow Logs**: Detects network anomalies, including port scanning, unauthorized traffic patterns, and other network security events.
+- **CloudTrail Logs**: Analyzed for unusual API calls that could indicate unauthorized access, privilege escalation, or service misconfiguration.
+- **Route 53 DNS Logs**: Detects suspicious DNS queries related to command-and-control activities or domain generation algorithms (DGAs).
+- **S3 Data Events**: Identifies unauthorized access to S3 buckets and objects, such as data exfiltration or privilege escalation.
+- **AWS Network Firewall Logs**: Analyzed to identify blocked or allowed traffic patterns that could suggest malicious activity or misconfigured security settings.
+
+---
+
+## Summary:
+GuardDuty automatically analyzes the following logs **without any additional configuration**:
+- **VPC Flow Logs** (if they are enabled in your VPC).
+- **Route 53 DNS query logs** (if DNS queries are being made within your account).
+- **CloudTrail event logs** (which are enabled by default in all AWS accounts).
+- **CloudTrail S3 data events** (if S3 data event logging is enabled).
+- **AWS Network Firewall logs** (if you are using AWS Network Firewall and have logging enabled).
+
+To get the most out of GuardDuty, ensure that **CloudTrail** and **VPC Flow Logs** are enabled, and if needed, enable **S3 data event logging** for CloudTrail. These logs provide GuardDuty with the necessary data to detect and alert you about potential security issues.
