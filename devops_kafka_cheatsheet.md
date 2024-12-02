@@ -186,3 +186,89 @@ If one consumer fails, Kafka will rebalance the partitions, reassigning the fail
 - Kafka ensures that each partition is consumed by **only one consumer** in the group at a time.
 - **Rebalancing** helps redistribute partitions if consumers join or leave the group.
 - Consumer groups provide **scalability**, **parallel processing**, and **fault tolerance** for distributed message consumption.
+
+---
+
+# Kafka Security Protocols
+
+Kafka provides several security protocols to secure communication between clients and brokers, ensuring encryption, authentication, and integrity. Below are the supported protocols:
+
+---
+
+## 1. PLAINTEXT
+
+**Description**: No security features; communication is unencrypted, and there is no authentication.  
+**Use Case**: Internal testing or when operating in a trusted and isolated environment.  
+**Security**: Not secure. Susceptible to eavesdropping and tampering.
+
+---
+
+## 2. SSL (Secure Sockets Layer)
+
+**Description**: Enables encryption and authentication using TLS/SSL certificates.  
+**Features**:
+- Encrypts data in transit, preventing eavesdropping.
+- Provides optional client authentication using SSL certificates.
+
+**Use Case**: Scenarios requiring encrypted communication without SASL (e.g., non-authenticated encryption).  
+**Configuration**:
+```
+security.protocol=SSL
+ssl.keystore.location=/path/to/keystore.jks
+ssl.keystore.password=your_keystore_password
+ssl.truststore.location=/path/to/truststore.jks
+ssl.truststore.password=your_truststore_password
+```
+
+---
+
+## 3. SASL_PLAINTEXT
+
+**Description**: Enables SASL (Simple Authentication and Security Layer) authentication without encryption.  
+**Features**:
+- Authentication with SASL mechanisms (e.g., PLAIN, SCRAM, GSSAPI, OAUTHBEARER).
+- Communication is not encrypted.
+
+**Use Case**: Trusted environments where authentication is needed but encryption is not required.  
+**Security**: Weak. Vulnerable to interception since communication is unencrypted.  
+**Configuration**:
+
+```
+security.protocol=SASL_PLAINTEXT
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="user" password="password";
+```
+
+
+---
+
+## 4. SASL_SSL
+
+**Description**: Combines SASL authentication with SSL encryption for secure communication.  
+**Features**:
+- SASL provides authentication (e.g., PLAIN, SCRAM, GSSAPI, OAUTHBEARER).
+- SSL ensures data encryption and optional client authentication.
+
+**Use Case**: Environments requiring both authentication and encrypted communication.  
+**Security**: Strong. Combines encryption (SSL/TLS) with authentication (SASL).  
+**Configuration**:
+
+```
+security.protocol=SASL_SSL
+sasl.mechanism=SCRAM-SHA-256
+sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required username="user" password="password";
+ssl.keystore.location=/path/to/keystore.jks
+ssl.keystore.password=your_keystore_password
+ssl.truststore.location=/path/to/truststore.jks
+ssl.truststore.password=your_truststore_password
+```
+
+
+---
+
+# Comparison of Kafka Security Protocols
+
+**PLAINTEXT**: No encryption or authentication. Best for testing or trusted environments.  
+**SSL**: Encryption with optional client authentication. Best for secure communication without SASL.  
+**SASL_PLAINTEXT**: Authentication only (via SASL). Suitable for trusted environments without encryption.  
+**SASL_SSL**: Full security (encryption + authentication). Best for production environments requiring both.
