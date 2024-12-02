@@ -272,3 +272,43 @@ ssl.truststore.password=your_truststore_password
 **SSL**: Encryption with optional client authentication. Best for secure communication without SASL.  
 **SASL_PLAINTEXT**: Authentication only (via SASL). Suitable for trusted environments without encryption.  
 **SASL_SSL**: Full security (encryption + authentication). Best for production environments requiring both.
+
+
+---
+
+# Kafka Connect - Connector Storage
+
+In Kafka, connectors created through **Kafka Connect** (the framework for integrating Kafka with external systems) are saved in **Kafka's internal topics**. These topics store the configuration and status of connectors, tasks, and other related information.
+
+## Key Kafka Internal Topics for Connectors
+
+1. **`connect-configs`**:
+  - This topic stores the configurations of the **connectors**. Each connector configuration, including its settings and parameters, is stored as a message in this topic.
+
+2. **`connect-offsets`**:
+  - This topic stores the **offsets** for the source connectors. It tracks the progress of data ingestion or extraction (i.e., where the connector left off in processing data).
+  - For source connectors, this helps ensure that data is correctly read from the source system starting from the right place after a restart.
+
+3. **`connect-status`**:
+  - This topic stores the **status** of each connector and task. It includes information like whether the connector is running, stopped, or failed, along with any error messages.
+  - It is used to track the health of connectors and their tasks.
+
+## How Kafka Connect Works with These Topics
+
+- **Connector Configuration**: When you create a connector using the Kafka Connect REST API (e.g., `POST /connectors`), the configuration is stored in the `connect-configs` topic.
+- **Connector Offsets**: For source connectors, the offset information (i.e., where the connector last processed data) is saved in the `connect-offsets` topic.
+- **Connector Status**: The status of connectors and tasks (running, failed, etc.) is saved in the `connect-status` topic.
+
+## Kafka Internal Topics and Retention
+
+These internal topics are managed automatically by Kafka, but you can configure their retention policies. By default, the retention period is set to **forever**, but it is possible to set an appropriate retention period based on your use case using the `log.retention.ms` configuration for these topics.
+
+## Example of Connector Topic Storage
+
+1. When you deploy a **source connector**, the connector configuration is stored in `connect-configs`.
+2. As the connector reads data from an external system, its offsets are tracked in the `connect-offsets` topic.
+3. The **status** of each connector (running, stopped, etc.) is stored in `connect-status` to monitor the connector's state.
+
+## Conclusion
+
+When creating connectors in Kafka Connect, the configurations, offsets, and statuses of the connectors are stored in Kafka’s internal topics: `connect-configs`, `connect-offsets`, and `connect-status`. These topics allow Kafka Connect to manage, track, and monitor the lifecycle of connectors and their tasks.
