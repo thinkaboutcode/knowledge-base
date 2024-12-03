@@ -15,9 +15,9 @@ Encryption is the process of securing data by converting it into an unreadable f
 
 - **Example:**
     - **Encryption:**  
-      \( C = E(K, M) \), where \( K \) is the key, \( M \) is the message, and \( C \) is the ciphertext.
+      C = E(K, M), where K is the key, M is the message, and C is the ciphertext.
     - **Decryption:**  
-      \( M = D(K, C) \).
+      M = D(K, C).
 
 - **Popular Algorithms:**
     1. **AES (Advanced Encryption Standard):**
@@ -34,7 +34,7 @@ Encryption is the process of securing data by converting it into an unreadable f
         - Each pair of communicating entities requires a unique key.
     2. **Scalability:**
         - In environments with many users, the number of keys required grows rapidly.
-        - For \( n \) users, $$\frac{n(n-1)}{2}$$ keys are needed for full communication.
+        - For n users, $$\frac{n(n-1)}{2}$$ keys are needed for full communication.
     3. **Key Loss/Exposure:**
         - If the key is compromised, all data encrypted with it is at risk.
 
