@@ -34,7 +34,7 @@ Encryption is the process of securing data by converting it into an unreadable f
         - Each pair of communicating entities requires a unique key.
     2. **Scalability:**
         - In environments with many users, the number of keys required grows rapidly.
-        - For \( n \) users, \( \frac{n(n-1)}{2} \) keys are needed for full communication.
+        - For \( n \) users, $$\frac{n(n-1)}{2}$$ keys are needed for full communication.
     3. **Key Loss/Exposure:**
         - If the key is compromised, all data encrypted with it is at risk.
 
@@ -59,9 +59,9 @@ Encryption is the process of securing data by converting it into an unreadable f
 
 - **Example:**
     - **Encryption:**  
-      \( C = E(P_{\text{pub}}, M) \), where \( P_{\text{pub}} \) is the public key.
+      $$(C = E(P_{\text{pub}}, M)$$, where $$P_{\text{pub}}$$ is the public key.
     - **Decryption:**  
-      \( M = D(P_{\text{priv}}, C) \), where \( P_{\text{priv}} \) is the private key.
+      $$M = D(P_{\text{priv}}, C)$$, where $$P_{\text{priv}}$$ is the private key.
 
 - **Popular Algorithms:**
     1. **RSA (Rivest-Shamir-Adleman):**
