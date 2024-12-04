@@ -1,3 +1,5 @@
+<img src="azure_databricks.svg" alt="azure databricks" />
+
 # Overview of Databricks on Azure
 
 Azure Databricks is a fast, easy, and collaborative Apache Spark-based analytics platform designed for big data and machine learning. It integrates seamlessly with Azure's cloud ecosystem, offering data engineers, data scientists, and analysts a powerful tool to process and analyze large-scale data in real time.
