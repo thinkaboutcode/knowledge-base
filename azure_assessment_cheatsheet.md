@@ -29,7 +29,7 @@
 8. **Microsoft Assessments**:
     - **Azure Security Center**: Offers security assessments to help you evaluate the security posture of your resources, including recommendations for improving security controls.
     - **Azure Migrate**: Helps assess and plan the migration of on-premises workloads to Azure, offering detailed insights into resource compatibility and readiness.
-    - **Azure Well-Architected Review**: Provides assessments based on the **Well-Architected Framework** to evaluate your workloads in terms of reliability, security, performance, cost optimization, and operational excellence.
+    - **[Azure Well-Architected Review](https://learn.microsoft.com/en-us/assessments/azure-architecture-review/)**: Provides assessments based on the **Well-Architected Framework** to evaluate your workloads in terms of reliability, security, performance, cost optimization, and operational excellence.
     - **Azure Cost Management + Billing**: Provides cost assessments to help identify underutilized resources, opportunities for cost-saving, and recommendations for more efficient usage.
     - **Azure Policy and Blueprints**: Helps assess compliance with organizational or regulatory standards, allowing you to enforce governance at scale across your subscription.
 
