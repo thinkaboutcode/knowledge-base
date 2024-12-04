@@ -8,15 +8,17 @@ Clean Architecture is a layered approach to software design that separates conce
 ## Core Principles
 
 1. **Separation of Concerns**: Each layer is responsible for a specific role.
-2. **Dependency Inversion**: High-level modules should not depend on low-level modules. Both should depend on abstractions (interfaces).
-3. **Single Responsibility Principle (SRP)**: A module/class should have one reason to change.
-4. **Open/Closed Principle (OCP)**: Modules should be open for extension but closed for modification.
+2. **Single Responsibility Principle (SRP)**: A module/class should have one reason to change.
+3. **Open/Closed Principle (OCP)**: Modules should be open for extension but closed for modification.
+4. **Liskov Substitution Principle (LSP)**: Subtypes must be substitutable for their base types.
 5. **Interface Segregation Principle (ISP)**: Clients should not be forced to depend on interfaces they do not use.
-6. **Liskov Substitution Principle (LSP)**: Subtypes must be substitutable for their base types.
+6. **Dependency Inversion**: High-level modules should not depend on low-level modules. Both should depend on abstractions (interfaces).
 
 ---
 
 ## Layers of Clean Architecture
+
+<img src="architecture_clean.jpg" alt="clean architecture" />
 
 ### 1. **Entities**
 - **Description**: Business logic and rules. Independent of any external component (framework, database, etc.).
