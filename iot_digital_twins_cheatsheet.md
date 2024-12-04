@@ -201,7 +201,6 @@ Yes, there are several standards and frameworks for creating **Digital Twins** t
 }
 ```
 
-## Comparison
 # Comparison of Digital Twin Standards
 
 | **Standard**                                | **Overview**                                                                                   | **Key Features**                                                                                                                                                                    | **Use Case**                                       |
