@@ -1,5 +1,7 @@
 # Azure Delta Lake Overview
 
+<img src="azure_deltalake.png" alt="azure delta lake" />
+
 **Azure Delta Lake** is an open-source storage layer that brings **reliability, performance, and scalability** to data lakes. Built on top of **Apache Spark**, it provides **ACID (Atomicity, Consistency, Isolation, Durability)** transaction capabilities to traditional data lakes, enabling robust data management and analytics. Azure Delta Lake integrates seamlessly with **Azure Data Lake Storage (ADLS)** and **Azure Databricks**, making it an essential part of modern data engineering and analytics workflows.
 
 ---
