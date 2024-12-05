@@ -1,4 +1,4 @@
-# Isolation Levels in Databases: A Cheatsheet
+# Isolation Levels in Databases
 
 In databases, **transaction isolation levels** define how changes made in one transaction are visible to others. They are crucial for balancing **consistency, performance, and concurrency**. Below is a summary of the standard isolation levels and the common concurrency problems they address.
 
