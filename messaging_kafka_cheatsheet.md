@@ -312,3 +312,9 @@ These internal topics are managed automatically by Kafka, but you can configure 
 ## Conclusion
 
 When creating connectors in Kafka Connect, the configurations, offsets, and statuses of the connectors are stored in Kafka’s internal topics: `connect-configs`, `connect-offsets`, and `connect-status`. These topics allow Kafka Connect to manage, track, and monitor the lifecycle of connectors and their tasks.
+
+---
+
+
+# Monitoring
+https://docs.confluent.io/platform/current/kafka/monitoring.html
