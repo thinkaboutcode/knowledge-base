@@ -1,4 +1,4 @@
-<img src="devops_kafka.drawio.svg" alt="Description of SVG" />
+<img src="messaging_kafka.drawio.svg" alt="Description of SVG" />
 
 # Kafka Consumers and Partitions
 

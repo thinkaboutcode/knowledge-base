@@ -110,5 +110,3 @@ Windowing can be combined with operations like `groupBy`, `aggregate`, or `reduc
 
 - **Late-arriving events**: Grace periods help handle this, but too large a grace period increases state retention costs.
 - **State Management**: Windowing operations involve stateful processing, which requires sufficient resources for managing state stores.
-
-Would you like further details on any specific windowing type or concept?
