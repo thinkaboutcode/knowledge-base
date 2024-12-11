@@ -7,91 +7,94 @@ mindmap
       Go
       Scala
       Java
-        Kotlin
         WebFlux
         Reactor
         R2DBC
         Payara
-        Spring Integration
+        Kotlin
+        Arquillian
+        SoapUI
         Fitnesse
         Cucumber/Gherkin
+        Spring Integration
         Quarkus
       Python
         DocTest
         nose
     DevOps
-      CI/CD
-        Tekton
-        GitHub Actions
-        ArgoCD
       Kubernetes
-        OpenShift
-        EKS
         Kyverno
         Gatekeeper
+        AI Kubeflow
+        Loki
         Prometheus
         Grafana
         Mimir
+        OpenShift
         Ranger        
-        Operator Pattern
-        Loki
         IBM Instana
+        Operator Pattern
+        Karpenter
+        Velero
         Tempo
+      CI/CD
+        Tekton
+        GitOps
+        GitHub Actions
+        ArgoCD
       Tools
         Ansible
         AWX
         Renovate
-        GitHub Actions
-        Azure Certs
       IaC
-        OpenTofu
-        AWS CDK
         Crossplane
-        Pulumi
+        OpenTofu
         Sparkle Formation             
+        Pulumi
+        AWS CDK
     Testing
       Cypress
     Security
+      Whitesource
+      Trivy
       DefectDojo
       CyberArk
-      Trivy
-      Whitesource
     Architecture
       SOA
-      Self Contained System
-      Data Mesh
-      Arc42
       GraphQL
         Apollo
+      Arc42
+      Self Contained System
       iPaaS-Plattformen
         Boomi
+      Messaging
+        Kafka
+        RabbitMQ
     Data Analytics
+      Apache NiFi
+      Apache Pulsar
       Dremio/Drill
+      Hazelcast
+      Flink   
       Spark
       Dagster
       Airflow
       Oozie
-      GitOps
       Flume
-      Apache NiFi
-      Apache Pulsar
-      Hazelcast
-      Flink   
+      Data Mesh
     DB
       InfluxDB
       Neo4j
       Cassandra
       Apache Marmotta     
-    Messaging
-      RabbitMQ
-      Kafka
     Certs
       Kubernetes Administrator
       Kubernetes Developer
       IREB CPRE FL
+      TOGAF
+      Azure Certs
       Kafka
       ISAQ
-      TOGAF
     Web
       Vue.js
       NGXS
@@ -102,7 +105,9 @@ mindmap
     Cloud
       AWS
         MSK
+        EMR
         Redshift
+        EKS
       Azure
         Bicep
     Other
