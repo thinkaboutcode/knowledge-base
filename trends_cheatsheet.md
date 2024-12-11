@@ -55,9 +55,9 @@ mindmap
     Testing
       Cypress
     Security
-      Whitesource
-      Trivy
-      DefectDojo
+      Whitesource (OS Scanning/License Compliance)
+      Trivy (Container Snanner)
+      DefectDojo (Vulnerability Management)
       CyberArk
     Architecture
       SOA
