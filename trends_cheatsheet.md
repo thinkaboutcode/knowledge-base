@@ -26,17 +26,17 @@ mindmap
         Kyverno
         Gatekeeper
         AI Kubeflow
-        Loki
         Prometheus
-        Grafana
         Mimir
+        Grafana
+        Loki
+        Tempo (Tracing)
         OpenShift
-        Ranger        
-        IBM Instana
+        Ranger
+        IBM Instana (Monitoring)
         Operator Pattern
-        Karpenter
-        Velero
-        Tempo
+        Karpenter (Autoscaler)
+        Velero (e.g. for backup)
       CI/CD
         Tekton
         GitOps
