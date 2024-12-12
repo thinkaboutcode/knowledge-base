@@ -30,13 +30,13 @@ mindmap
         Mimir
         Grafana
         Loki
-        Tempo (Tracing)
+        Tempo Tracing
         OpenShift
         Ranger
-        IBM Instana (Monitoring)
+        IBM Instana Monitoring
         Operator Pattern
-        Karpenter (Autoscaler)
-        Velero (e.g. for backup)
+        Karpenter Autoscaler
+        Velero Backup
       CI/CD
         Tekton
         GitOps
@@ -55,9 +55,9 @@ mindmap
     Testing
       Cypress
     Security
-      Whitesource-OSS-License-Compliance
-      Trivy-Container-Scanner
-      DefectDojo-Vulnerability-Management
+      Whitesource OSS License Compliance
+      Trivy Container Scanner
+      DefectDojo Vulnerability Management
       CyberArk
     Architecture
       SOA
@@ -65,7 +65,7 @@ mindmap
         Apollo
       Arc42
       Self Contained System
-      iPaaS-Plattformen
+      iPaaS Plattform
         Boomi
       Messaging
         Kafka
