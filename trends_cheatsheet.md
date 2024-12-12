@@ -16,7 +16,7 @@ mindmap
         SoapUI
         Fitnesse
         Cucumber/Gherkin
-        Spring Integration
+        Spring-Integration
         Quarkus
       Python
         DocTest
@@ -25,22 +25,22 @@ mindmap
       Kubernetes
         Kyverno
         Gatekeeper
-        AI Kubeflow
+        AI-Kubeflow
         Prometheus
         Mimir
         Grafana
         Loki
-        Tempo Tracing
+        Tempo-Tracing
         OpenShift
         Ranger
-        IBM Instana Monitoring
-        Operator Pattern
-        Karpenter Autoscaler
+        IBM-Instana-Monitoring
+        Operator-Pattern
+        Karpenter-Autoscaler
         Velero Backup
       CI/CD
         Tekton
         GitOps
-        GitHub Actions
+        GitHub-Actions
         ArgoCD
       Tools
         Ansible
@@ -49,30 +49,30 @@ mindmap
       IaC
         Crossplane
         OpenTofu
-        Sparkle Formation             
+        Sparkle-Formation             
         Pulumi
         AWS CDK
     Testing
       Cypress
     Security
-      Whitesource OSS License Compliance
-      Trivy Container Scanner
-      DefectDojo Vulnerability Management
+      Whitesource-OSS-License-Compliance
+      Trivy-Container-Scanner
+      DefectDojo-Vulnerability-Management
       CyberArk
     Architecture
       SOA
       GraphQL
         Apollo
       Arc42
-      Self Contained System
-      iPaaS Plattform
+      Self-Contained-System
+      iPaaS-Plattform
         Boomi
       Messaging
         Kafka
         RabbitMQ
     Data Analytics
-      Apache NiFi
-      Apache Pulsar
+      Apache-NiFi
+      Apache-Pulsar
       Dremio/Drill
       Hazelcast
       Flink   
@@ -81,18 +81,18 @@ mindmap
       Airflow
       Oozie
       Flume
-      Data Mesh
+      Data-Mesh
     DB
       InfluxDB
       Neo4j
       Cassandra
-      Apache Marmotta     
+      Apache-Marmotta     
     Certs
-      Kubernetes Administrator
-      Kubernetes Developer
-      IREB CPRE FL
+      Kubernetes-Administrator
+      Kubernetes-Developer
+      IREB-CPRE-FL
       TOGAF
-      Azure Certs
+      Azure-Certs
       Kafka
       ISAQ
     Web
