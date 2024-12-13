@@ -45,7 +45,7 @@ class MyBucketConstruct(Construct):
 - Each stack corresponds to a Terraform workspace.
 - Stacks define the scope for resource deployment and configuration.
 
-```pycon
+```python
 from cdktf import App, TerraformStack
 from imports.aws import AwsProvider
 
