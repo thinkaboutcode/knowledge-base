@@ -97,6 +97,8 @@ mindmap
       ISAQ
     Web
       Vue.js
+      Nest.js
+      Express.js
       NGXS
       PrimeNG
       Shiny-Apps
