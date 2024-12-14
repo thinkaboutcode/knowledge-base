@@ -16,33 +16,39 @@ TypeScript is a strongly-typed superset of JavaScript that adds optional static 
     - Functions and Parameters
     - Interfaces and Type Aliases
 
-3. **Advanced TypeScript Features**
+3. **Conditionals**
+
+
+4. **Loops**
+
+
+5. **Advanced TypeScript Features**
     - Generics
     - Enums
     - Utility Types
 
-4. **Working with Classes and Objects**
+6. **Working with Classes and Objects**
     - Classes and Inheritance
     - Access Modifiers
     - Abstract Classes and Interfaces
 
-5. **Modules and Namespaces**
+7. **Modules and Namespaces**
     - Import and Export
     - Namespaces
 
-6. **TypeScript in Practice**
+8. **TypeScript in Practice**
     - Integration with JavaScript Libraries
     - TypeScript and React
     - Setting Up a TypeScript Project
 
-7. **Debugging and Best Practices**
+9. **Debugging and Best Practices**
     - Debugging TypeScript Code
     - Linting and Formatting
     - Writing Clean TypeScript Code
 
-8. **Common Pitfalls and How to Avoid Them**
+10. **Common Pitfalls and How to Avoid Them**
 
-9. **[Playground](https://www.typescriptlang.org/play/)**
+11. **[Playground](https://www.typescriptlang.org/play/)**
 ---
 
 ## 1. Introduction to TypeScript
@@ -114,6 +120,127 @@ console.log(myMap.has("Charlie")); // Output: false
 console.log(myMap.size); // Output: 2
 ```
 
+### Functions and Parameters
+Functions can have typed parameters and return types.
+
+```typescript
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+function greet(name: string, isMorning: boolean = true): string {
+  return isMorning ? `Good morning, ${name}!` : `Hello, ${name}!`;
+}
+```
+
+### Interfaces and Type Aliases
+Interfaces and type aliases allow you to define custom types.
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+  isEmployed?: boolean; // Optional property
+}
+
+type Coordinates = [number, number];
+
+const person: Person = {
+  name: "Bob",
+  age: 30,
+};
+```
+
+## 3. Conditionals
+
+**if-else Conditional**
+```typescript
+let age: number = 18;
+
+if (age >= 18) {
+    console.log("You are eligible to vote.");
+} else {
+    console.log("You are not eligible to vote.");
+}
+```
+
+**if-else if Ladder**
+```typescript
+let score: number = 75;
+
+if (score >= 90) {
+    console.log("Grade: A");
+} else if (score >= 80) {
+    console.log("Grade: B");
+} else if (score >= 70) {
+    console.log("Grade: C");
+} else {
+    console.log("Grade: F");
+}
+```
+
+**switch Statement**
+```typescript
+let day: string = "Tuesday";
+
+switch (day) {
+    case "Monday":
+        console.log("Start of the work week!");
+        break;
+    case "Friday":
+        console.log("Last day of the work week!");
+        break;
+    case "Saturday":
+    case "Sunday":
+        console.log("It's the weekend!");
+        break;
+    default:
+        console.log("It's a regular weekday.");
+}
+```
+
+**Ternary Operator**
+```typescript
+let isMember: boolean = true;
+let discount: number = isMember ? 10 : 0;
+
+console.log(`Your discount is ${discount}%`);
+```
+
+**Using Enums with Conditionals**
+```typescript
+enum Role {
+    Admin,
+    User,
+    Guest
+}
+
+let currentRole: Role = Role.User;
+
+if (currentRole === Role.Admin) {
+    console.log("Welcome Admin! You have full access.");
+} else if (currentRole === Role.User) {
+    console.log("Welcome User! You have limited access.");
+} else {
+    console.log("Welcome Guest! Please log in.");
+}
+```
+
+**Type Guards with Conditionals**
+```typescript
+function printLength(input: string | number): void {
+    if (typeof input === "string") {
+        console.log(`The length of the string is ${input.length}`);
+    } else {
+        console.log(`The number is ${input}`);
+    }
+}
+
+printLength("TypeScript"); // Output: The length of the string is 10
+printLength(42);           // Output: The number is 42
+```
+
+## 4. Loops
 **Iterating Through a Map**
 
 ```typescript
@@ -225,40 +352,7 @@ console.log(groupedByAge);
 // }
 ```
 
-### Functions and Parameters
-Functions can have typed parameters and return types.
-
-```typescript
-function add(a: number, b: number): number {
-  return a + b;
-}
-
-function greet(name: string, isMorning: boolean = true): string {
-  return isMorning ? `Good morning, ${name}!` : `Hello, ${name}!`;
-}
-```
-
-### Interfaces and Type Aliases
-Interfaces and type aliases allow you to define custom types.
-
-```typescript
-interface Person {
-  name: string;
-  age: number;
-  isEmployed?: boolean; // Optional property
-}
-
-type Coordinates = [number, number];
-
-const person: Person = {
-  name: "Bob",
-  age: 30,
-};
-```
-
----
-
-## 3. Advanced TypeScript Features
+## 5. Advanced TypeScript Features
 
 ### Generics
 Generics enable you to create reusable components.
@@ -303,7 +397,7 @@ const update: Partial<Task> = {
 
 ---
 
-## 4. Working with Classes and Objects
+## 6. Working with Classes and Objects
 
 ### Classes and Inheritance
 TypeScript supports object-oriented programming.
@@ -362,7 +456,7 @@ class Circle extends Shape {
 
 ---
 
-## 5. Modules and Namespaces
+## 7. Modules and Namespaces
 
 ### Import and Export
 Organize code using ES6 modules.
@@ -393,7 +487,7 @@ Utils.log("Hello from namespace");
 
 ---
 
-## 6. TypeScript in Practice
+## 8. TypeScript in Practice
 
 ### Integration with JavaScript Libraries
 Use `@types` packages for type definitions.
@@ -433,7 +527,7 @@ const Greeting: React.FC<Props> = ({ name, age }) => (
 
 ---
 
-## 7. Debugging and Best Practices
+## 9. Debugging and Best Practices
 
 ### Debugging TypeScript Code
 Use source maps to debug TypeScript in modern browsers.
@@ -460,7 +554,7 @@ npm install --save-dev eslint prettier
 
 ---
 
-## 8. Common Pitfalls and How to Avoid Them
+## 10. Common Pitfalls and How to Avoid Them
 
 1. **Overusing `any`:** Stick to specific types for better type safety.
 2. **Ignoring Type Errors:** Always address errors instead of suppressing them.
