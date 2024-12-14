@@ -87,6 +87,142 @@ let age: number = 25;
 let name: string = "Alice";
 let isDeveloper: boolean = true;
 let hobbies: string[] = ["coding", "reading"];
+
+```
+
+### Map
+```typescript
+// Create a new Map
+const myMap = new Map<string, number>();
+
+// Add key-value pairs
+myMap.set("Alice", 25);
+myMap.set("Bob", 30);
+myMap.set("Charlie", 35);
+
+// Access a value by key
+console.log(myMap.get("Alice")); // Output: 25
+
+// Check if a key exists
+console.log(myMap.has("Bob")); // Output: true
+
+// Delete a key-value pair
+myMap.delete("Charlie");
+console.log(myMap.has("Charlie")); // Output: false
+
+// Get the size of the Map
+console.log(myMap.size); // Output: 2
+```
+
+**Iterating Through a Map**
+
+```typescript
+for (const [key, value] of myMap) {
+   console.log(`${key}: ${value}`);
+}
+// Output:
+// Alice: 25
+// Bob: 30
+```
+
+```typescript
+myMap.forEach((value, key) => {
+   console.log(`${key}: ${value}`);
+});
+// Output:
+// Alice: 25
+// Bob: 30
+```
+
+### Iterating through Arrays
+
+**Filtering an Array**
+
+```typescript
+const numbers = [1, 2, 3, 4, 5, 6];
+
+// Filter even numbers
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4, 6]
+```
+
+**Filtering an Array**
+```typescript
+const names = ["Alice", "Bob", "Charlie"];
+
+// Convert names to uppercase
+const upperCaseNames = names.map(name => name.toUpperCase());
+console.log(upperCaseNames); // Output: ["ALICE", "BOB", "CHARLIE"]
+```
+
+**Reducing an Array**
+```typescript
+const numbers = [1, 2, 3, 4, 5];
+
+// Sum all numbers
+const sum = numbers.reduce((accumulator, current) => accumulator + current, 0);
+console.log(sum); // Output: 15
+```
+
+**Combining filter and map**
+```typescript
+const numbers = [1, 2, 3, 4, 5, 6];
+
+// Get squares of even numbers
+const evenSquares = numbers
+        .filter(num => num % 2 === 0) // Filter even numbers
+        .map(num => num * num);       // Square each number
+console.log(evenSquares); // Output: [4, 16, 36]
+```
+
+**Processing an Array of Objects**
+```typescript
+const users = [
+   { name: "Alice", age: 25 },
+   { name: "Bob", age: 30 },
+   { name: "Charlie", age: 35 },
+];
+
+// Get names of users older than 28
+const namesOfOlderUsers = users
+        .filter(user => user.age > 28)  // Filter users by age
+        .map(user => user.name);        // Extract names
+console.log(namesOfOlderUsers); // Output: ["Bob", "Charlie"]
+```
+
+**Java-Like Sorted Streams**
+```typescript
+const numbers = [5, 3, 8, 1, 4];
+
+// Sort and double the numbers
+const sortedDoubles = numbers
+    .sort((a, b) => a - b) // Sort in ascending order
+    .map(num => num * 2);  // Double each number
+console.log(sortedDoubles); // Output: [2, 6, 8, 10, 16]
+```
+
+**Grouping Similar to Java Streams**
+```typescript
+const users = [
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 30 },
+    { name: "Charlie", age: 25 },
+];
+
+// Group users by age
+const groupedByAge = users.reduce((group, user) => {
+    const ageGroup = group[user.age] || [];
+    ageGroup.push(user);
+    group[user.age] = ageGroup;
+    return group;
+}, {} as { [key: number]: typeof users });
+
+console.log(groupedByAge);
+// Output:
+// {
+//   25: [{ name: "Alice", age: 25 }, { name: "Charlie", age: 25 }],
+//   30: [{ name: "Bob", age: 30 }]
+// }
 ```
 
 ### Functions and Parameters
