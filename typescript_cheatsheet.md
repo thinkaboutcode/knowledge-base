@@ -86,6 +86,8 @@ TypeScript extends JavaScript by adding static types. This means you can specify
 ## 2. Basic TypeScript Syntax
 
 ### Variables and Types
+
+**Variables**
 TypeScript provides various built-in types, such as `number`, `string`, `boolean`, `array`, and `tuple`.
 
 ```typescript
@@ -93,7 +95,107 @@ let age: number = 25;
 let name: string = "Alice";
 let isDeveloper: boolean = true;
 let hobbies: string[] = ["coding", "reading"];
+```
 
+**Tuple**
+```typescript
+// Define a tuple with a string and a number
+let person: [string, number];
+
+// Initialize the tuple
+person = ["Alice", 30];
+
+console.log(`Name: ${person[0]}`); // Output: Name: Alice
+console.log(`Age: ${person[1]}`); // Output: Age: 30
+
+//Optional Elements
+// A tuple where the last element is optional
+let product: [string, number, string?];
+
+product = ["Laptop", 1500];
+console.log(product); // Output: ['Laptop', 1500]
+
+product = ["Laptop", 1500, "Electronics"];
+console.log(product); // Output: ['Laptop', 1500, 'Electronics']
+
+// Rest Elements
+// A tuple with rest elements
+let coordinates: [number, number, ...number[]];
+
+coordinates = [10, 20];
+console.log(coordinates); // Output: [10, 20]
+
+coordinates = [10, 20, 30, 40];
+console.log(coordinates); // Output: [10, 20, 30, 40]
+
+//Destructuring
+let user: [string, number] = ["Alice", 25];
+
+// Destructuring the tuple
+let [name, age] = user;
+
+console.log(`Name: ${name}`); // Output: Name: Alice
+console.log(`Age: ${age}`);   // Output: Age: 25
+```
+
+**Types**
+
+**Union Types**
+```typescript
+type Status = "success" | "failure" | "pending";
+
+let requestStatus: Status = "success";
+```
+
+**Intersection Types**
+```typescript
+type Identifiable = { id: string };
+type Timestamped = { createdAt: Date };
+
+type Record = Identifiable & Timestamped;
+
+const record: Record = {
+    id: "123",
+    createdAt: new Date()
+};
+```
+
+**Utility Types**
+```typescript
+type User = {
+    name: string;
+    age: number;
+    email: string;
+};
+
+type UserWithoutEmail = Omit<User, "email">;
+
+const user: UserWithoutEmail = {
+    name: "Alice",
+    age: 25
+};
+```
+
+**Defining Aliases for Primitives or Functions**
+```typescript
+type Age = number;
+
+const myAge: Age = 30;
+
+type Greet = (name: string) => string;
+
+const greet: Greet = (name) => `Hello, ${name}`;
+```
+
+**Immutable Types**
+```typescript
+type Point = {
+    readonly x: number;
+    readonly y: number;
+};
+
+const p: Point = { x: 10, y: 20 };
+// p.x = 30; // Error: Cannot assign to 'x' because it is a read-only property
 ```
 
 ### Map
@@ -131,6 +233,134 @@ function add(a: number, b: number): number {
 function greet(name: string, isMorning: boolean = true): string {
   return isMorning ? `Good morning, ${name}!` : `Hello, ${name}!`;
 }
+```
+
+**First-Class Functions**
+```typescript
+const greet = (name: string): string => `Hello, ${name}!`;
+
+const greeter = greet;
+console.log(greeter("Alice")); // Output: Hello, Alice!
+```
+
+**Higher-Order Functions**
+```typescript
+const applyFunction = (fn: (x: number) => number, value: number): number => {
+    return fn(value);
+};
+
+const double = (x: number): number => x * 2;
+
+console.log(applyFunction(double, 5)); // Output: 10
+```
+
+**Anonymous Functions**
+```typescript
+const numbers = [1, 2, 3, 4];
+
+// Use an anonymous function with type inference
+const doubled = numbers.map((num) => num * 2);
+
+console.log(doubled); // Output: [2, 4, 6, 8]
+```
+
+**Pure Functions**
+```typescript
+const pureAdd = (a: number, b: number): number => a + b;
+
+console.log(pureAdd(2, 3)); // Output: 5
+```
+
+**Immutability**
+```typescript
+const addToArray = (arr: readonly number[], value: number): number[] => {
+    return [...arr, value]; // Returns a new array instead of modifying the original
+};
+
+const nums: readonly number[] = [1, 2, 3];
+const newNums = addToArray(nums, 4);
+
+console.log(newNums); // Output: [1, 2, 3, 4]
+console.log(nums);    // Output: [1, 2, 3]
+```
+
+**Functional Composition**
+```typescript
+const double = (x: number): number => x * 2;
+const increment = (x: number): number => x + 1;
+
+const compose = (f: (x: number) => number, g: (x: number) => number) => {
+    return (x: number): number => f(g(x));
+};
+
+const doubleAfterIncrement = compose(double, increment);
+
+console.log(doubleAfterIncrement(3)); // Output: 8
+```
+
+**Map, Filter, Reduce**
+```typescript
+const numbers = [1, 2, 3, 4, 5];
+
+// Double each number
+const doubled = numbers.map((num) => num * 2);
+
+// Filter out odd numbers
+const evenNumbers = doubled.filter((num) => num % 2 === 0);
+
+// Sum all numbers
+const sum = evenNumbers.reduce((acc, num) => acc + num, 0);
+
+console.log(sum); // Output: 12
+```
+
+**Currying**
+```typescript
+const add = (a: number) => (b: number) => a + b;
+
+const addFive = add(5);
+
+console.log(addFive(3)); // Output: 8
+```
+
+**Type Guards for Functional Programming**
+```typescript
+const filterStrings = (items: (string | number)[]): string[] => {
+    return items.filter((item): item is string => typeof item === "string");
+};
+
+const mixed = ["hello", 42, "world", 99];
+const strings = filterStrings(mixed);
+
+console.log(strings); // Output: ['hello', 'world']
+```
+
+**Recursive Functions**
+```typescript
+const factorial = (n: number): number => {
+    return n === 0 ? 1 : n * factorial(n - 1);
+};
+
+console.log(factorial(5)); // Output: 120
+```
+
+**Functional Libraries**
+You can integrate libraries like Ramda, Lodash, or fp-ts to write more advanced functional code in TypeScript.
+
+Example with fp-ts:
+```typescript
+import { pipe } from "fp-ts/function";
+import * as A from "fp-ts/Array";
+
+const numbers = [1, 2, 3, 4, 5];
+
+const result = pipe(
+    numbers,
+    A.map((x) => x * 2),
+    A.filter((x) => x > 5)
+);
+
+console.log(result); // Output: [6, 8, 10]
 ```
 
 ### Interfaces and Type Aliases
