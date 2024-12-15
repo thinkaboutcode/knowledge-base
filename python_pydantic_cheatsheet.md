@@ -37,6 +37,8 @@ Pydantic is a Python library for **data validation** and **settings management**
 
 ## Example: Defining and Validating a Model with Pydantic
 
+### Basic Data Validation and Parsing
+
 ```python
 from pydantic import BaseModel, ValidationError
 from typing import List, Optional
@@ -76,6 +78,150 @@ except ValidationError as e:
 #   value is not a valid integer (type=type_error.integer)
 # friends
 #   value is not a valid list (type=type_error.list)
+```
+
+### Default Values
+```python
+class User(BaseModel):
+    id: int
+    name: str
+    is_active: bool = True  # Default value
+
+user = User(id=1, name="Alice")
+print(user)
+```
+
+### Type Coercion
+```python
+class User(BaseModel):
+    id: int
+    age: int
+
+user = User(id="123", age="30")  # Strings will be converted to integers
+print(user)
+```
+
+### Data Validation with Constrained Types
+```python
+from pydantic import BaseModel, Field, EmailStr, constr
+
+class User(BaseModel):
+    id: int
+    name: constr(min_length=3, max_length=50)  # Name must be 3-50 characters long
+    email: EmailStr  # Validates email addresses
+    age: int = Field(..., ge=18, le=100)  # Age must be between 18 and 100
+
+# Valid data
+user = User(id=1, name="Alice", email="alice@example.com", age=25)
+print(user)
+
+# Invalid email or age raises ValidationError
+# user = User(id=1, name="Bob", email="invalid-email", age=150)
+```
+
+### Nested Models
+```python
+class Address(BaseModel):
+    city: str
+    zip_code: str
+
+class User(BaseModel):
+    id: int
+    name: str
+    address: Address
+
+input_data = {
+    "id": 1,
+    "name": "Alice",
+    "address": {
+        "city": "New York",
+        "zip_code": "10001"
+    }
+}
+
+user = User(**input_data)
+print(user)
+```
+
+### Custom Validators
+```python
+from pydantic import BaseModel, validator
+
+class User(BaseModel):
+    id: int
+    name: str
+    age: int
+
+    @validator('age')
+    def check_age(cls, value):
+        if value < 18:
+            raise ValueError("Age must be at least 18")
+        return value
+
+user = User(id=1, name="Alice", age=25)
+print(user)
+
+# Raises ValidationError for age < 18
+# invalid_user = User(id=2, name="Bob", age=15)
+```
+
+### Model Serialization
+```python
+class User(BaseModel):
+    id: int
+    name: str
+
+user = User(id=1, name="Alice")
+
+# To dictionary
+print(user.dict())
+
+# To JSON
+print(user.json())
+```
+
+### Environment Variables with BaseSettings
+```python
+from pydantic import BaseSettings
+
+class AppConfig(BaseSettings):
+    app_name: str
+    debug: bool = False
+
+    class Config:
+        env_file = ".env"  # Load variables from a .env file
+
+# Example: .env file contains:
+# APP_NAME=MyApp
+# DEBUG=True
+
+config = AppConfig()
+print(config.app_name)  # Output: MyApp
+print(config.debug)  # Output: True
+```
+
+### Using Aliases
+```python
+class User(BaseModel):
+    id: int
+    full_name: str = Field(..., alias="fullName")
+
+data = {"id": 1, "fullName": "Alice Johnson"}
+user = User(**data)
+print(user.full_name)  # Output: Alice Johnson
+```
+
+### Immutable Models
+```python
+class User(BaseModel):
+    id: int
+    name: str
+
+    class Config:
+        frozen = True
+
+user = User(id=1, name="Alice")
+# user.name = "Bob"  # Raises a TypeError
 ```
 
 ## Common Use Cases for Pydantic:
