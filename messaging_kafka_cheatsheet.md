@@ -2,6 +2,76 @@
 
 Kafka is a distributed streaming platform composed of several key components that work together to provide a scalable and fault-tolerant system for processing real-time data. Below is a detailed overview of the Kafka architecture, including brokers, ZooKeeper, and the Kafka controller.
 
+## Table of Contents
+- [Kafka Architecture](#kafka-architecture)
+- [Kafka Components](#kafka-components)
+  - [ZooKeeper](#zookeeper)
+  - [Kafka Brokers](#kafka-brokers)
+  - [Kafka Controller](#kafka-controller)
+  - [Topic Partitions](#topic-partitions)
+- [Kafka Consumers and Partitions](#kafka-consumers-and-partitions)
+  - [Key Concepts](#key-concepts)
+    - [Partitions in a Topic](#partitions-in-a-topic)
+    - [Consumer and Partition Assignment](#consumer-and-partition-assignment)
+    - [Multiple Topics and Partitions](#multiple-topics-and-partitions)
+    - [Partitioning and Parallelism](#partitioning-and-parallelism)
+    - [Rebalancing](#rebalancing)
+    - [Consumer Offset Tracking](#consumer-offset-tracking)
+    - [Message Consumption](#message-consumption)
+    - [Example Scenario](#example-scenario)
+  - [Summary](#summary)
+- [Best Practices for Multiple Consumers](#best-practices-for-multiple-consumers)
+  - [Why Multiple Consumers](#why-multiple-consumers)
+  - [Key Considerations](#key-considerations)
+    - [Partitions vs. Consumers](#partitions-vs-consumers)
+    - [Consumer Group](#consumer-group)
+    - [Processing Order](#processing-order)
+    - [Rebalancing Impact](#rebalancing-impact)
+    - [Consumer Coordination](#consumer-coordination)
+    - [Resource Consumption](#resource-consumption)
+  - [Summary](#summary-1)
+- [Kafka Consumer Groups](#kafka-consumer-groups)
+  - [Definition](#definition)
+  - [Key Concepts](#key-concepts-1)
+    - [Parallel Processing](#parallel-processing)
+    - [Message Distribution](#message-distribution)
+    - [Scaling and Fault Tolerance](#scaling-and-fault-tolerance)
+    - [Offset Management](#offset-management)
+    - [Rebalancing](#rebalancing-1)
+    - [Consumer Group IDs](#consumer-group-ids)
+    - [Topic Subscription](#topic-subscription)
+  - [Example Behavior](#example-behavior)
+  - [Benefits](#benefits)
+  - [Summary](#summary-2)
+- [Kafka Security Protocols](#kafka-security-protocols)
+  - [PLAINTEXT](#plaintext)
+  - [SSL](#ssl)
+  - [SASL_PLAINTEXT](#saslplaintext)
+  - [SASL_SSL](#saslssl)
+  - [Protocol Comparison](#protocol-comparison)
+- [Kafka Connect - Connector Storage](#kafka-connect-connector-storage)
+  - [Key Kafka Topics](#key-kafka-topics)
+  - [Kafka Connect Integration](#kafka-connect-integration)
+  - [Topic Retention](#topic-retention)
+  - [Connector Topic Example](#connector-topic-example)
+  - [Conclusion](#conclusion)
+- [Monitoring](#monitoring)
+- [Kafka Producer Guarantees](#kafka-producer-guarantees)
+  - [Delivery Guarantees: `acks`](#delivery-guarantees-acks)
+    - [`acks=0`: Fire-and-Forget](#acks0-fire-and-forget)
+    - [`acks=1`: Leader Acknowledgment](#acks1-leader-acknowledgment)
+    - [`acks=all`: All In-Sync Replicas](#acksall-all-in-sync-replicas)
+  - [Idempotence and Exactly-Once Delivery](#idempotence-and-exactly-once-delivery)
+  - [Idempotence with `acks`](#idempotence-with-acks)
+    - [`acks=1` with Idempotence](#acks1-with-idempotence)
+    - [`acks=all` with Idempotence](#acksall-with-idempotence)
+    - [`acks=0` with Idempotence](#acks0-with-idempotence)
+  - [Comparison of Guarantees](#comparison-of-guarantees)
+  - [Key Considerations](#key-considerations-1)
+  - [Choosing the Right Configuration](#choosing-the-right-configuration)
+
+
+
 ## Kafka Architecture
 
 ```mermaid
@@ -15,24 +85,6 @@ graph LR
     E[Kafka Controller] --> F[Topic Partition 1]
     E[Kafka Controller] --> G[Topic Partition 2]
     E[Kafka Controller] --> H[Topic Partition 3]
-
-    style A fill:#ffeb3b,stroke:#ff9800,stroke-width:2px
-    style B fill:#4caf50,stroke:#388e3c,stroke-width:2px
-    style C fill:#4caf50,stroke:#388e3c,stroke-width:2px
-    style D fill:#4caf50,stroke:#388e3c,stroke-width:2px
-    style E fill:#2196f3,stroke:#1e88e5,stroke-width:2px
-    style F fill:#03a9f4,stroke:#0288d1,stroke-width:2px
-    style G fill:#03a9f4,stroke:#0288d1,stroke-width:2px
-    style H fill:#03a9f4,stroke:#0288d1,stroke-width:2px
-
-    A[ZooKeeper]:::style
-    B[Kafka Broker 1]:::style
-    C[Kafka Broker 2]:::style
-    D[Kafka Broker 3]:::style
-    E[Kafka Controller]:::style
-    F[Topic Partition 1]:::style
-    G[Topic Partition 2]:::style
-    H[Topic Partition 3]:::style
 ```
 
 ---
