@@ -1,3 +1,68 @@
+# Kafka Architecture with Brokers, ZooKeeper, and Controller
+
+Kafka is a distributed streaming platform composed of several key components that work together to provide a scalable and fault-tolerant system for processing real-time data. Below is a detailed overview of the Kafka architecture, including brokers, ZooKeeper, and the Kafka controller.
+
+## Kafka Architecture
+
+```mermaid
+graph LR
+    A[ZooKeeper] --> B[Kafka Broker 1]
+    A[ZooKeeper] --> C[Kafka Broker 2]
+    A[ZooKeeper] --> D[Kafka Broker 3]
+    B[Kafka Broker 1] --> E[Kafka Controller]
+    C[Kafka Broker 2] --> E[Kafka Controller]
+    D[Kafka Broker 3] --> E[Kafka Controller]
+    E[Kafka Controller] --> F[Topic Partition 1]
+    E[Kafka Controller] --> G[Topic Partition 2]
+    E[Kafka Controller] --> H[Topic Partition 3]
+
+    style A fill:#ffeb3b,stroke:#ff9800,stroke-width:2px
+    style B fill:#4caf50,stroke:#388e3c,stroke-width:2px
+    style C fill:#4caf50,stroke:#388e3c,stroke-width:2px
+    style D fill:#4caf50,stroke:#388e3c,stroke-width:2px
+    style E fill:#2196f3,stroke:#1e88e5,stroke-width:2px
+    style F fill:#03a9f4,stroke:#0288d1,stroke-width:2px
+    style G fill:#03a9f4,stroke:#0288d1,stroke-width:2px
+    style H fill:#03a9f4,stroke:#0288d1,stroke-width:2px
+
+    A[ZooKeeper]:::style
+    B[Kafka Broker 1]:::style
+    C[Kafka Broker 2]:::style
+    D[Kafka Broker 3]:::style
+    E[Kafka Controller]:::style
+    F[Topic Partition 1]:::style
+    G[Topic Partition 2]:::style
+    H[Topic Partition 3]:::style
+```
+
+---
+
+## Kafka Components:
+
+1. **ZooKeeper**:
+  - ZooKeeper manages metadata and coordinates Kafka brokers.
+  - It handles tasks like leader election, broker discovery, and cluster membership.
+  - Kafka relies on ZooKeeper to maintain the configuration and state of the cluster.
+
+2. **Kafka Brokers**:
+  - Kafka brokers are responsible for storing and serving data.
+  - Brokers handle incoming messages, store them in partitions, and serve data to consumers.
+  - Each broker can manage multiple partitions of a topic.
+  - Kafka brokers work together to form a Kafka cluster, with each broker handling a portion of the partitions.
+
+3. **Kafka Controller**:
+  - The Kafka Controller is a special broker that ensures the overall health of the Kafka cluster.
+  - It is responsible for tasks like partition leadership, rebalancing partitions across brokers, and handling replication.
+  - The controller ensures that each partition has one leader broker, and other brokers are followers.
+
+4. **Topic Partitions**:
+  - Kafka topics are divided into partitions, which allow data to be distributed across multiple brokers.
+  - Each partition has a leader broker that handles all reads and writes to that partition, while the other brokers replicate the data as followers.
+  - Partitions help scale Kafka and provide fault tolerance by replicating data across brokers.
+
+---
+
+
 <img src="messaging_kafka.drawio.svg" alt="Description of SVG" />
 
 # Kafka Consumers and Partitions
