@@ -82,6 +82,8 @@ mindmap
       Oozie
       Flume
       Data-Mesh
+      MLflow
+      
     DB
       InfluxDB
       Neo4j
@@ -114,4 +116,5 @@ mindmap
         Bicep
     Other
       Arm64
+      Open-Air-Project-Management
 ```
