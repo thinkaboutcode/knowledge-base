@@ -18,6 +18,8 @@ mindmap
         Cucumber/Gherkin
         Spring-Integration
         Quarkus
+        NATS
+        JPOS
       Python
         DocTest
         nose
