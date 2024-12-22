@@ -1,3 +1,32 @@
+# Table of Contents
+- [Node.js Overview](#nodejs-overview)
+- [1. Core Concepts](#1-core-concepts)
+  - [JavaScript Runtime Environment](#javascript-runtime-environment)
+  - [Single-Threaded Event Loop](#single-threaded-event-loop)
+  - [Asynchronous Programming](#asynchronous-programming)
+- [2. Key Features](#2-key-features)
+  - [High Performance](#high-performance)
+  - [NPM (Node Package Manager)](#npm-node-package-manager)
+  - [Cross-Platform](#cross-platform)
+  - [Scalability](#scalability)
+- [3. Applications of Node.js](#3-applications-of-nodejs)
+  - [Web Servers](#web-servers)
+  - [Real-Time Applications](#real-time-applications)
+  - [APIs and Microservices](#apis-and-microservices)
+  - [Streaming Applications](#streaming-applications)
+  - [Automation and CLI Tools](#automation-and-cli-tools)
+- [4. Libraries and Frameworks](#4-libraries-and-frameworks)
+  - [Express.js](#expressjs)
+  - [NestJS](#nestjs)
+  - [Socket.io](#socketio)
+  - [Sequelize/TypeORM](#sequelizetypeorm)
+- [5. Performance Considerations](#5-performance-considerations)
+  - [Single-Threaded Model](#single-threaded-model)
+  - [Memory Consumption](#memory-consumption)
+- [6. Security](#6-security)
+- [7. Challenges with Node.js](#7-challenges-with-nodejs)
+- [Conclusion](#conclusion)
+
 # Node.js Overview
 
 Node.js is an open-source, cross-platform runtime environment built on Chrome's V8 JavaScript engine that allows developers to execute JavaScript code server-side. It enables JavaScript to be used for backend development, traditionally the domain of languages like PHP, Ruby, or Python. This has revolutionized full-stack development, as it allows for both client-side and server-side logic to be written in JavaScript, facilitating seamless development across the stack.
