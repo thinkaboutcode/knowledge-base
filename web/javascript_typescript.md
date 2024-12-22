@@ -6,52 +6,20 @@ TypeScript is a strongly-typed superset of JavaScript that adds optional static 
 
 ## Table of Contents
 
-1. **Introduction to TypeScript**
-    - What is TypeScript?
-    - Benefits of Using TypeScript
-    - Setting Up Your Environment
-
-2. **Basic TypeScript Syntax**
-    - Variables and Types
-    - Functions and Parameters
-    - Interfaces and Type Aliases
-
-3. **Conditionals**
-
-
-4. **Loops**
-
-
-5. **Advanced TypeScript Features**
-    - Generics
-    - Enums
-    - Utility Types
-
-6. **Working with Classes and Objects**
-    - Classes and Inheritance
-    - Access Modifiers
-    - Abstract Classes and Interfaces
-
-7. **Modules and Namespaces**
-    - Import and Export
-    - Namespaces
-
-8. **TypeScript in Practice**
-    - Integration with JavaScript Libraries
-    - TypeScript and React
-    - Setting Up a TypeScript Project
-
-9. **Debugging and Best Practices**
-    - Debugging TypeScript Code
-    - Linting and Formatting
-    - Writing Clean TypeScript Code
-
-10. **Common Pitfalls and How to Avoid Them**
-
-11. **[Playground](https://www.typescriptlang.org/play/)**
+- [Introduction to TypeScript](#introduction)
+- [Basic TypeScript Syntax](#basic-typescript-syntax)
+- [Conditionals](#conditionals)
+- [Loops](#loops)
+- [Advanced TypeScript Features](#advanced-typescript-features)
+- [Working with Classes and Objects](#working-with-classes-and-objects)
+- [Modules and Namespaces](#modules-and-namespaces)
+- [TypeScript in Practice](#typescript-in-practice)
+- [Debugging and Best Practices](#debugging-and-best-practices)
+- [Common Pitfalls and How to Avoid Them](#common-pitfalls-and-how-to-avoid-them)
+- [Playground](https://www.typescriptlang.org/play/)
 ---
 
-## 1. Introduction to TypeScript
+## Introduction
 
 ### What is TypeScript?
 TypeScript extends JavaScript by adding static types. This means you can specify the type of variables, function parameters, and return values, allowing for better tooling and fewer runtime errors. TypeScript code compiles to plain JavaScript, so it works wherever JavaScript runs.
@@ -83,7 +51,7 @@ TypeScript extends JavaScript by adding static types. This means you can specify
 
 ---
 
-## 2. Basic TypeScript Syntax
+## Basic TypeScript Syntax
 
 ### Variables and Types
 
@@ -381,7 +349,7 @@ const person: Person = {
 };
 ```
 
-## 3. Conditionals
+## Conditionals
 
 **if-else Conditional**
 ```typescript
@@ -470,7 +438,7 @@ printLength("TypeScript"); // Output: The length of the string is 10
 printLength(42);           // Output: The number is 42
 ```
 
-## 4. Loops
+## Loops
 **Iterating Through a Map**
 
 ```typescript
@@ -582,7 +550,7 @@ console.log(groupedByAge);
 // }
 ```
 
-## 5. Advanced TypeScript Features
+## Advanced TypeScript Features
 
 ### Generics
 Generics enable you to create reusable components.
@@ -627,7 +595,7 @@ const update: Partial<Task> = {
 
 ---
 
-## 6. Working with Classes and Objects
+## Working with Classes and Objects
 
 ### Classes and Inheritance
 TypeScript supports object-oriented programming.
@@ -686,7 +654,7 @@ class Circle extends Shape {
 
 ---
 
-## 7. Modules and Namespaces
+## Modules and Namespaces
 
 ### Import and Export
 Organize code using ES6 modules.
@@ -717,7 +685,7 @@ Utils.log("Hello from namespace");
 
 ---
 
-## 8. TypeScript in Practice
+## TypeScript in Practice
 
 ### Integration with JavaScript Libraries
 Use `@types` packages for type definitions.
@@ -757,7 +725,7 @@ const Greeting: React.FC<Props> = ({ name, age }) => (
 
 ---
 
-## 9. Debugging and Best Practices
+## Debugging and Best Practices
 
 ### Debugging TypeScript Code
 Use source maps to debug TypeScript in modern browsers.
@@ -784,7 +752,7 @@ npm install --save-dev eslint prettier
 
 ---
 
-## 10. Common Pitfalls and How to Avoid Them
+## Common Pitfalls and How to Avoid Them
 
 1. **Overusing `any`:** Stick to specific types for better type safety.
 2. **Ignoring Type Errors:** Always address errors instead of suppressing them.
