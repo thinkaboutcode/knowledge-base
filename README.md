@@ -259,6 +259,7 @@
 <details>
 <summary>web</summary>
 
+- [javascript_build_pipeline.md](./web/javascript_build_pipeline.md)
 - [javascript_express_nest.md](./web/javascript_express_nest.md)
 - [javascript_node.md](./web/javascript_node.md)
 - [javascript_typescript.md](./web/javascript_typescript.md)
