@@ -13,9 +13,7 @@
 - [Benefits of Using Spring Integration](#benefits-of-using-spring-integration)
 - [Example Use Cases](#example-use-cases)
 - [Example Integration Flow](#example-integration-flow)
-- [Configuration Example](#configuration-example)
-    - [XML-Based Configuration](#xml-based-configuration)
-    - [Java Configuration](#java-configuration)
+- [Example Implementation](#example-implementation)
 - [Conclusion](#conclusion)
 
 ---
@@ -117,33 +115,91 @@ Below is an example of a simple integration flow:
 
 ---
 
-## Configuration Example
-
-### XML-Based Configuration
-```xml
-<int-file:inbound-channel-adapter id="fileAdapter"
-    directory="file:/input-directory"
-    channel="fileInputChannel" />
-
-<int:transformer input-channel="fileInputChannel"
-    output-channel="processedChannel" ref="fileTransformer" />
-
-<int:router input-channel="processedChannel" expression="payload.fileType"
-    channel-mappings="xml=xmlChannel, json=jsonChannel" />
-
-<int:service-activator input-channel="xmlChannel"
-    ref="xmlProcessor" method="process" />
-```
+## Example Implementation
 
 ```java
-@Bean
-public IntegrationFlow fileProcessingFlow() {
-    return IntegrationFlows.from(Files.inboundAdapter(new File("/input-directory")))
-            .transform(file -> transformFile(file))
-            .<File, String>route(file -> determineFileType(file),
-                    mapping -> mapping.channelMapping("xml", "xmlChannel")
-                                      .channelMapping("json", "jsonChannel"))
-            .get();
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.integration.annotation.EnableIntegration;
+import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.dsl.IntegrationFlow;
+import org.springframework.integration.dsl.IntegrationFlows;
+import org.springframework.integration.file.dsl.Files;
+import org.springframework.messaging.MessageChannel;
+
+import java.io.File;
+
+@Configuration
+@EnableIntegration
+public class FileIntegrationConfig {
+
+    // Define a DirectChannel to replace the fileInputChannel
+    @Bean
+    public MessageChannel fileInputChannel() {
+        return new DirectChannel();
+    }
+
+    // Define a DirectChannel to replace the processedChannel
+    @Bean
+    public MessageChannel processedChannel() {
+        return new DirectChannel();
+    }
+
+    // Define a DirectChannel to replace xmlChannel
+    @Bean
+    public MessageChannel xmlChannel() {
+        return new DirectChannel();
+    }
+
+    // Define a DirectChannel to replace jsonChannel
+    @Bean
+    public MessageChannel jsonChannel() {
+        return new DirectChannel();
+    }
+
+    // Define the Integration Flow
+    @Bean
+    public IntegrationFlow fileProcessingFlow() {
+        return IntegrationFlows.from(Files.inboundAdapter(new File("/input-directory"))
+                                .autoCreateDirectory(true),
+                        e -> e.poller(p -> p.fixedDelay(1000))) // Poll every 1 second
+                .channel(fileInputChannel()) // Send to fileInputChannel
+                .transform(file -> transformFile(file)) // Transform the file
+                .channel(processedChannel()) // Send to processedChannel
+                .<File, String>route(file -> determineFileType(file), // Route based on file type
+                        mapping -> mapping
+                                .channelMapping("xml", xmlChannel())
+                                .channelMapping("json", jsonChannel()))
+                .get();
+    }
+
+    // Define a processor for XML files
+    @Bean
+    public IntegrationFlow xmlProcessingFlow() {
+        return IntegrationFlows.from(xmlChannel())
+                .handle("xmlProcessor", "process") // Call the xmlProcessor.process() method
+                .get();
+    }
+
+    // Define a processor for JSON files (optional)
+    @Bean
+    public IntegrationFlow jsonProcessingFlow() {
+        return IntegrationFlows.from(jsonChannel())
+                .handle("jsonProcessor", "process") // Call the jsonProcessor.process() method
+                .get();
+    }
+
+    // Example transformation method
+    private Object transformFile(Object file) {
+        // Implement your file transformation logic here
+        return file;
+    }
+
+    // Example method to determine file type
+    private String determineFileType(Object file) {
+        // Implement your file type determination logic here (e.g., based on file extension)
+        return "xml"; // For simplicity, assume all files are XML in this example
+    }
 }
 ```
 
