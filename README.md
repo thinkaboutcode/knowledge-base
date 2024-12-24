@@ -160,6 +160,7 @@
 - [java_modules_osgi.md](./java/java_modules_osgi.md)
 - [java_quarkus_reactive.md](./java/java_quarkus_reactive.md)
 - [java_spring_integration.md](./java/java_spring_integration.md)
+- [java_spring_integration_vs_vertx.md](./java/java_spring_integration_vs_vertx.md)
 - [java_spring_reactive.md](./java/java_spring_reactive.md)
 - [java_streams.md](./java/java_streams.md)
 - [java_tools.md](./java/java_tools.md)
