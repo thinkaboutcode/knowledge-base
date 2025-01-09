@@ -1,3 +1,13 @@
+# Table of Contents
+
+1. [Kafka Streams: Stateless Transformations, Aggregations, Terminal Operations, Writing to Topics, and Joins](#kafka-streams-stateless-transformations-aggregations-terminal-operations-writing-to-topics-and-joins)
+2. [Stateless Transformations](#stateless-transformations)
+3. [Aggregations](#aggregations)
+4. [Terminal Operations](#terminal-operations)
+5. [Writing to Kafka Topics](#writing-to-kafka-topics)
+6. [Kafka Streams Joins](#kafka-streams-joins)
+7. [Summary](#summary)
+
 # Kafka Streams: Stateless Transformations, Aggregations, Terminal Operations, Writing to Topics, and Joins
 
 Kafka Streams is a powerful library for building real-time data processing pipelines. It provides mechanisms for applying **stateless transformations**, **aggregations**, **terminal operations**, **writing data to topics**, and **joining streams and tables**, enabling you to process and transform data streams efficiently. Below is a comprehensive overview of these concepts.
