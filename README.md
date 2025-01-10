@@ -217,6 +217,7 @@
 - [networking_ipv6.md](./networking/networking_ipv6.md)
 - [networking_osi.md](./networking/networking_osi.md)
 - [networking_tools.md](./networking/networking_tools.md)
+- [networking_ipam.md](./networking/networking_ipam.md)
 - [protocol_webrtc.md](./networking/protocol_webrtc.md)
 - [protocol_websockets.md](./networking/protocol_websockets.md)
 </details>
