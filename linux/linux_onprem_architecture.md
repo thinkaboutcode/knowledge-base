@@ -2,7 +2,7 @@
 
 ```mermaid
 graph TD
-    A[DNS Server] --> B[Web Application Firewall (WAF)]
+    A[DNS Server] --> B[WAF]
     B --> C[Load Balancer]
     C --> D[Apache Web Server 1]
     C --> E[Apache Web Server 2]
