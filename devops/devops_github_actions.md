@@ -34,7 +34,6 @@ A composite action is a custom, reusable GitHub Action defined in a repository. 
 ```
 
 ```yaml
-```yaml
 #**Example (`action.yml`):**
 name: Reusable Composite Action
 description: Installs dependencies and runs tests
