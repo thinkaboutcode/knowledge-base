@@ -191,6 +191,7 @@
 - [linux_cgroups.md](./linux/linux_cgroups.md)
 - [linux_debian.md](./linux/linux_debian.md)
 - [linux_os.md](./linux/linux_os.md)
+- [linux_onprem_architecture.md](./linux/linux_onprem_architecture.md)
 - [linux_shell_coding_guideline.md](./linux/linux_shell_coding_guideline.md)
 - [linux_shell_playground.ipynb](./linux/linux_shell_playground.ipynb)
 - [linux_shell_scripting.md](./linux/linux_shell_scripting.md)

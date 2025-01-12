@@ -84,8 +84,7 @@ mindmap
       Oozie
       Flume
       Data-Mesh
-      MLflow
-      
+      MLflow 
     DB
       InfluxDB
       Neo4j
