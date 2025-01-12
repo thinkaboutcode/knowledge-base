@@ -2,6 +2,24 @@
 
 The network layers refer to the **layers of the OSI model** (Open Systems Interconnection model), a conceptual framework used to standardize networking protocols and facilitate communication across diverse systems. The model comprises **seven layers**, each responsible for specific functions in the data communication process.
 
+```mermaid
+graph TD
+    Application[Application Layer] 
+    Presentation[Presentation Layer] 
+    Session[Session Layer] 
+    Transport[Transport Layer] 
+    Network[Network Layer] 
+    DataLink[Data Link Layer] 
+    Physical[Physical Layer]
+
+    Application --> Presentation
+    Presentation --> Session
+    Session --> Transport
+    Transport --> Network
+    Network --> DataLink
+    DataLink --> Physical
+```
+
 ---
 
 ## 1. Physical Layer
