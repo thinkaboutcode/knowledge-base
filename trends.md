@@ -56,6 +56,7 @@ mindmap
         AWS CDK
     Testing
       Cypress
+      Playwright
     Security
       Whitesource-OSS-License-Compliance
       Trivy-Container-Scanner
