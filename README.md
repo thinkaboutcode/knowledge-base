@@ -260,6 +260,7 @@
 - [security_sni.md](./security/security_sni.md)
 - [security_X.509_cert.md](./security/security_x.509_cert.md)
 - [security_zero_trust_architecture.md](./security/security_zero_trust_architecture.md)
+- [security_nist.md](./security/security_nist.md)
 </details>
 <details>
 <summary>web</summary>
