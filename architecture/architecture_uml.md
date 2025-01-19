@@ -54,17 +54,147 @@ These diagrams focus on the static structure of the system and its components.
 - **Purpose**: Describes the structure of the system by showing its classes, attributes, operations, and relationships (associations, generalizations, dependencies).
 - **Use When**: You want to model the blueprint of the system, its objects, and their interconnections.
 
+```mermaid
+classDiagram
+    class Library {
+        - name: String
+        - address: String
+        + addBook(book: Book): void
+        + registerMember(member: Member): void
+    }
+
+    class Book {
+        - title: String
+        - author: String
+        - isbn: String
+        + borrow(): void
+        + return(): void
+    }
+
+    class Member {
+        - name: String
+        - membershipId: String
+        + borrowBook(book: Book): void
+        + returnBook(book: Book): void
+    }
+
+    class BorrowTransaction {
+        - transactionId: String
+        - borrowDate: Date
+        - returnDate: Date
+        + getTransactionDetails(): String
+    }
+
+    Library --> "has" Book
+    Library --> "manages" Member
+    Member --> "creates" BorrowTransaction
+    BorrowTransaction --> "relates to" Book
+```
+
 ### 2. Object Diagram
 - **Purpose**: Represents an instance of a class diagram showing specific object instances and their relationships at a particular point in time.
 - **Use When**: You need a snapshot of the system at runtime (e.g., testing or debugging).
+
+```mermaid
+classDiagram
+    class Library {
+        name: String
+        address: String
+    }
+    class Book {
+        title: String
+        author: String
+    }
+    class Member {
+        name: String
+        membershipId: String
+    }
+    class BorrowTransaction {
+        transactionId: String
+        borrowDate: Date
+        returnDate: Date
+    }
+
+    Library --> "has" Book
+    Library --> "has" Member
+    BorrowTransaction --> "involves" Book
+    BorrowTransaction --> "involves" Member
+
+    object LibraryInstance {
+        name = "Central Library"
+        address = "123 Library Street"
+    }
+    object BookInstance1 {
+        title = "The Great Gatsby"
+        author = "F. Scott Fitzgerald"
+    }
+    object BookInstance2 {
+        title = "1984"
+        author = "George Orwell"
+    }
+    object MemberInstance {
+        name = "Alice Johnson"
+        membershipId = "M123"
+    }
+    object TransactionInstance {
+        transactionId = "T456"
+        borrowDate = "2025-01-15"
+        returnDate = "2025-02-15"
+    }
+
+    LibraryInstance -- "has" BookInstance1
+    LibraryInstance -- "has" BookInstance2
+    LibraryInstance -- "has" MemberInstance
+    TransactionInstance -- "involves" BookInstance1
+    TransactionInstance -- "involves" MemberInstance
+```
 
 ### 3. Component Diagram
 - **Purpose**: Describes the high-level components (software modules) and their relationships, focusing on interfaces and dependencies between components.
 - **Use When**: You want to show the architecture of the system in terms of components.
 
+```mermaid
+graph TD
+    Client -->|HTTP Request| WebServer
+    WebServer -->|Processes Request| Application
+    Application -->|Reads/Writes Data| Database
+    Application -->|Calls API| ExternalService
+
+    subgraph Web Application
+        WebServer
+        Application
+    end
+
+    subgraph Backend
+        Database
+        ExternalService
+    end
+```
+
 ### 4. Composite Structure Diagram
 - **Purpose**: Shows the internal structure of a class, component, or other classifiers, focusing on the internal interactions between parts.
 - **Use When**: You need to illustrate the internal workings of a complex system or object.
+
+```mermaid
+graph TD
+    Car -->|Includes| Engine
+    Car -->|Includes| Transmission
+    Car -->|Includes| Wheels
+    Engine -->|Connected to| FuelSystem
+    Engine -->|Powers| CoolingSystem
+    Transmission -->|Connects to| Wheels
+
+    subgraph "Car System"
+        Engine
+        Transmission
+        Wheels
+    end
+
+    subgraph "Engine Subsystem"
+        FuelSystem
+        CoolingSystem
+    end
+```
 
 ### 5. Deployment Diagram
 - **Purpose**: Models the physical deployment of software artifacts (executables, files, etc.) onto hardware nodes and devices.
@@ -74,9 +204,45 @@ These diagrams focus on the static structure of the system and its components.
 - **Purpose**: Organizes elements of a system into related groups (packages) to illustrate the modular structure of the system.
 - **Use When**: You need to organize and manage large systems by grouping related classes and components.
 
+```mermaid
+graph TD
+    PackageA["UI Package"]
+    PackageB["Business Logic Package"]
+    PackageC["Data Access Package"]
+    PackageD["Utilities Package"]
+
+    subgraph Application
+        PackageA
+        PackageB
+        PackageC
+        PackageD
+    end
+
+    PackageA --> PackageB
+    PackageB --> PackageC
+    PackageC --> PackageD
+```
+
 ### 7. Profile Diagram
 - **Purpose**: Allows the customization of UML models for particular domains (e.g., real-time, enterprise systems) by defining profiles, stereotypes, and tagged values.
 - **Use When**: You are extending UML to model specific domains with custom constructs.
+
+```mermaid
+graph TD
+    <<RTSystem>>["Real-Time System Profile"] --> <<Task>>["Task"]
+    <<RTSystem>> --> <<Event>>["Event"]
+    <<RTSystem>> --> <<Signal>>["Signal"]
+
+    subgraph RTSystemProfile["Real-Time System Profile"]
+        <<Task>>
+        <<Event>>
+        <<Signal>>
+    end
+
+    <<Task>> -->|Stereotype Applied| "Real-Time Task"
+    <<Event>> -->|Stereotype Applied| "Trigger Event"
+    <<Signal>> -->|Stereotype Applied| "Communication Signal"
+```
 
 ---
 
