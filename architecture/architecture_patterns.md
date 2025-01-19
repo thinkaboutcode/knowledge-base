@@ -1,6 +1,40 @@
-# Software Architecture Patterns Cheatsheet
+# Software Architecture Patterns
 
 ---
+
+```mermaid
+mindmap
+  root
+    Layered Architecture N Tier
+    Client-Server Architecture
+    Microservices Architecture
+    Event-Driven Architecture
+    Serverless Architecture
+    Microkernel Plug-in Architecture
+    Event Sourcing Architecture
+    CQRS Command Query Responsibility Segregation
+    Peer-to-Peer Architecture
+    Hexagonal Architecture Ports and Adapters
+    Shared Nothing Architecture
+    Pipe-and-Filter Architecture
+```
+
+## Table of Contents
+
+1. [Layered (N-Tier) Architecture](#1-layered-n-tier-architecture)
+2. [Client-Server Architecture](#2-client-server-architecture)
+3. [Microservices Architecture](#3-microservices-architecture)
+4. [Event-Driven Architecture](#4-event-driven-architecture)
+5. [Serverless Architecture](#5-serverless-architecture)
+6. [Microkernel (Plug-in) Architecture](#6-microkernel-plug-in-architecture)
+7. [Event Sourcing Architecture](#7-event-sourcing-architecture)
+8. [CQRS (Command Query Responsibility Segregation)](#8-cqrs-command-query-responsibility-segregation)
+9. [Peer-to-Peer Architecture](#9-peer-to-peer-architecture)
+10. [Hexagonal Architecture (Ports and Adapters)](#10-hexagonal-architecture-ports-and-adapters)
+11. [Shared Nothing Architecture](#11-shared-nothing-architecture)
+12. [Pipe-and-Filter Architecture](#12-pipe-and-filter-architecture)
+13. [Summary Table](#summary-table)
+
 
 ## 1. Layered (N-Tier) Architecture
 
