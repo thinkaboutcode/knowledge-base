@@ -120,28 +120,6 @@ classDiagram
     BorrowTransaction --> "involves" Book
     BorrowTransaction --> "involves" Member
 
-    object LibraryInstance {
-        name = "Central Library"
-        address = "123 Library Street"
-    }
-    object BookInstance1 {
-        title = "The Great Gatsby"
-        author = "F. Scott Fitzgerald"
-    }
-    object BookInstance2 {
-        title = "1984"
-        author = "George Orwell"
-    }
-    object MemberInstance {
-        name = "Alice Johnson"
-        membershipId = "M123"
-    }
-    object TransactionInstance {
-        transactionId = "T456"
-        borrowDate = "2025-01-15"
-        returnDate = "2025-02-15"
-    }
-
     LibraryInstance -- "has" BookInstance1
     LibraryInstance -- "has" BookInstance2
     LibraryInstance -- "has" MemberInstance
@@ -226,23 +204,6 @@ graph TD
 ### 7. Profile Diagram
 - **Purpose**: Allows the customization of UML models for particular domains (e.g., real-time, enterprise systems) by defining profiles, stereotypes, and tagged values.
 - **Use When**: You are extending UML to model specific domains with custom constructs.
-
-```mermaid
-graph TD
-    <<RTSystem>>["Real-Time System Profile"] --> <<Task>>["Task"]
-    <<RTSystem>> --> <<Event>>["Event"]
-    <<RTSystem>> --> <<Signal>>["Signal"]
-
-    subgraph RTSystemProfile["Real-Time System Profile"]
-        <<Task>>
-        <<Event>>
-        <<Signal>>
-    end
-
-    <<Task>> -->|Stereotype Applied| "Real-Time Task"
-    <<Event>> -->|Stereotype Applied| "Trigger Event"
-    <<Signal>> -->|Stereotype Applied| "Communication Signal"
-```
 
 ---
 
