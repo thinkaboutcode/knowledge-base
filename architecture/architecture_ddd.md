@@ -1,4 +1,36 @@
-# Domain-Driven Design (DDD) Cheatsheet
+# Domain-Driven Design (DDD)
+
+```mermaid
+mindmap
+  root((Domain-Driven Design))
+    Core Concepts
+      Domain
+      Ubiquitous Language
+      Bounded Context
+      Subdomains
+        Core Domain
+        Supporting Subdomain
+        Generic Subdomain
+      Context Map
+    Building Blocks
+      Entities
+      Value Objects
+      Aggregates
+      Aggregate Root
+      Repositories
+      Factories
+      Domain Services
+    Communication
+      Domain Events
+      Anti-Corruption Layer (ACL)
+    Organization
+      Modules
+      Strategic Design
+    Patterns
+      Layered Architecture
+      CQRS
+      Event Sourcing
+```
 
 ## 1. Domain
 | **Aspect**    | **Details**                                                             |

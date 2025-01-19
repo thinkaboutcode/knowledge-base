@@ -1,6 +1,62 @@
-# UML 2 Cheatsheet
+# UML 2
 
 ---
+
+## Mindmap Example for UML Diagrams
+
+```mermaid
+mindmap
+  root
+    Structure Diagrams
+      Class Diagram
+      Object Diagram
+      Component Diagram
+      Composite Structure Diagram
+      Deployment Diagram
+      Package Diagram
+      Profile Diagram
+    Behavior Diagrams
+      Use Case Diagram
+      Activity Diagram
+      State Machine Diagram
+      Sequence Diagram
+      Communication Diagram
+      Interaction Overview Diagram
+      Timing Diagram
+    Interaction Diagrams
+      Sequence Diagram
+      Communication Diagram
+      Timing Diagram
+      Interaction Overview Diagram
+```
+
+## Table of Contents
+
+1. [Structure Diagrams](#structure-diagrams)
+   - [Class Diagram](#1-class-diagram)
+   - [Object Diagram](#2-object-diagram)
+   - [Component Diagram](#3-component-diagram)
+   - [Composite Structure Diagram](#4-composite-structure-diagram)
+   - [Deployment Diagram](#5-deployment-diagram)
+   - [Package Diagram](#6-package-diagram)
+   - [Profile Diagram](#7-profile-diagram)
+
+2. [Behavior Diagrams](#behavior-diagrams)
+   - [Use Case Diagram](#1-use-case-diagram)
+   - [Activity Diagram](#2-activity-diagram)
+   - [State Machine Diagram (State Diagram)](#3-state-machine-diagram-state-diagram)
+   - [Sequence Diagram](#4-sequence-diagram)
+   - [Communication Diagram](#5-communication-diagram)
+   - [Interaction Overview Diagram](#6-interaction-overview-diagram)
+   - [Timing Diagram](#7-timing-diagram)
+
+3. [Interaction Diagrams](#interaction-diagrams)
+   - [Sequence Diagram](#sequence-diagram)
+   - [Communication Diagram](#communication-diagram)
+   - [Timing Diagram](#timing-diagram)
+   - [Interaction Overview Diagram](#interaction-overview-diagram)
+
+4. [Summary Table](#summary-table)
 
 ## Structure Diagrams
 These diagrams focus on the static structure of the system and its components.
