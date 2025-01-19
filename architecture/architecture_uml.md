@@ -6,7 +6,7 @@
 
 ```mermaid
 mindmap
-  root
+  root((UML))
     Structure Diagrams
       Class Diagram
       Object Diagram

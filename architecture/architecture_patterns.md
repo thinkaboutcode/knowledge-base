@@ -4,7 +4,7 @@
 
 ```mermaid
 mindmap
-  root
+  root((Patterns))
     Layered Architecture N Tier
     Client-Server Architecture
     Microservices Architecture
