@@ -15,7 +15,7 @@ mindmap
       Deployment Diagram
       Package Diagram
       Profile Diagram
-    Behavior Diagrams
+    Behavior/Interaction Diagrams
       Use Case Diagram
       Activity Diagram
       State Machine Diagram
@@ -23,11 +23,6 @@ mindmap
       Communication Diagram
       Interaction Overview Diagram
       Timing Diagram
-    Interaction Diagrams
-      Sequence Diagram
-      Communication Diagram
-      Timing Diagram
-      Interaction Overview Diagram
 ```
 
 ## Table of Contents
@@ -49,12 +44,6 @@ mindmap
    - [Communication Diagram](#5-communication-diagram)
    - [Interaction Overview Diagram](#6-interaction-overview-diagram)
    - [Timing Diagram](#7-timing-diagram)
-
-3. [Interaction Diagrams](#interaction-diagrams)
-   - [Sequence Diagram](#sequence-diagram)
-   - [Communication Diagram](#communication-diagram)
-   - [Timing Diagram](#timing-diagram)
-   - [Interaction Overview Diagram](#interaction-overview-diagram)
 
 4. [Summary Table](#summary-table)
 
@@ -121,22 +110,6 @@ These diagrams focus on the dynamic behavior of the system and interactions betw
 ### 7. Timing Diagram
 - **Purpose**: Models the behavior of objects over time, focusing on time constraints and how object states change with time.
 - **Use When**: Timing is a critical aspect of your system, and you need to ensure that certain actions occur at precise times.
-
----
-
-## Interaction Diagrams (Subset of Behavior Diagrams)
-
-1. **Sequence Diagram** (also listed under behavior diagrams)
-    - **Purpose**: Focuses on the time-ordered flow of messages.
-
-2. **Communication Diagram** (also listed under behavior diagrams)
-    - **Purpose**: Emphasizes object interactions and relationships.
-
-3. **Timing Diagram** (also listed under behavior diagrams)
-    - **Purpose**: Focuses on the timing of interactions.
-
-4. **Interaction Overview Diagram** (also listed under behavior diagrams)
-    - **Purpose**: High-level control flow between interactions.
 
 ---
 
