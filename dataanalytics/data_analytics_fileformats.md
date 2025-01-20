@@ -2,6 +2,19 @@
 
 In the world of data analytics, storage options are essential for organizing and optimizing data for processing and querying. Let’s explore **Parquet** and other popular storage formats, highlighting their features, use cases, and strengths.
 
+# Table of Contents
+
+- [Overview of Parquet and Other Popular Data Storage Options](#overview-of-parquet-and-other-popular-data-storage-options)
+- [1. Parquet](#1-parquet)
+- [2. Avro](#2-avro)
+- [3. ORC (Optimized Row Columnar)](#3-orc-optimized-row-columnar)
+- [4. JSON (JavaScript Object Notation)](#4-json-javascript-object-notation)
+- [5. CSV (Comma-Separated Values)](#5-csv-comma-separated-values)
+- [6. Delta Lake](#6-delta-lake)
+- [7. Iceberg](#7-iceberg)
+- [Comparison Table](#comparison-table)
+- [Choosing the Right Format](#choosing-the-right-format)
+
 ---
 
 ### **1. Parquet**

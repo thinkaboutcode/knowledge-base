@@ -1,4 +1,33 @@
-# Data Cleaning Cheatsheet
+# Data Cleaning
+
+# Table of Contents
+
+- [Data Cleaning](#data-cleaning)
+  - [1. Handling NaN Values](#1-handling-nan-values)
+    - [A. Identifying NaN Values](#a-identifying-nan-values)
+    - [B. Removing NaN Values](#b-removing-nan-values)
+    - [C. Filling NaN Values](#c-filling-nan-values)
+    - [D. Interpolation](#d-interpolation)
+  - [2. Removing Duplicates](#2-removing-duplicates)
+  - [3. Handling Outliers](#3-handling-outliers)
+    - [Identifying Outliers](#identifying-outliers)
+    - [Removing Outliers](#removing-outliers)
+    - [Capping Outliers](#capping-outliers)
+  - [4. Data Type Conversion](#4-data-type-conversion)
+  - [5. Standardizing and Normalizing Data](#5-standardizing-and-normalizing-data)
+    - [Standardization (Z-score Normalization)](#standardization-z-score-normalization)
+    - [Normalization (Min-Max Scaling)](#normalization-min-max-scaling)
+  - [6. String Cleaning](#6-string-cleaning)
+    - [Trimming Whitespaces](#trimming-whitespaces)
+    - [Replacing Characters](#replacing-characters)
+  - [7. Encoding Categorical Variables](#7-encoding-categorical-variables)
+    - [One-Hot Encoding](#one-hot-encoding)
+    - [Label Encoding](#label-encoding)
+  - [8. Checking for Consistency](#8-checking-for-consistency)
+  - [9. Validating Data](#9-validating-data)
+  - [10. Documenting Cleaning Steps](#10-documenting-cleaning-steps)
+- [Conclusion](#conclusion)
+
 
 When preparing data for analysis or modeling, it’s essential to clean it thoroughly. Below are strategies to handle common data issues, including NaN values.
 
