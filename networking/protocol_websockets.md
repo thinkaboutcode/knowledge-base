@@ -1,4 +1,24 @@
-# WebSockets Explained
+# WebSockets
+
+### Table of Contents
+
+- [WebSockets](#websockets)
+  - [Key Features of WebSockets](#key-features-of-websockets)
+  - [How WebSockets Work](#how-websockets-work)
+  - [Use Cases](#use-cases)
+- [Useful Design Patterns for WebSockets](#useful-design-patterns-for-websockets)
+  - [Pub/Sub (Publish-Subscribe) Pattern](#pubsub-publish-subscribe-pattern)
+  - [Observer Pattern](#observer-pattern)
+  - [Request-Reply Pattern](#request-reply-pattern)
+  - [Message Queue Pattern](#message-queue-pattern)
+  - [Connection Pooling](#connection-pooling)
+  - [Backpressure Management](#backpressure-management)
+  - [Session Management](#session-management)
+  - [Room-Based Pattern](#room-based-pattern)
+  - [Failover and Redundancy Pattern](#failover-and-redundancy-pattern)
+  - [Event-Driven Architecture](#event-driven-architecture)
+  - [Reconnection Pattern](#reconnection-pattern)
+
 
 WebSockets are a communication protocol that enables a **persistent, bidirectional connection** between a client (e.g., a web browser) and a server. Unlike the traditional request-response model of HTTP, WebSockets allow for real-time data exchange without the need to repeatedly open and close connections.
 
