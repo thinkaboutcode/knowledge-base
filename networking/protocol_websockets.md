@@ -68,7 +68,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 1. Pub/Sub (Publish-Subscribe) Pattern
+## Pub/Sub (Publish-Subscribe) Pattern
 - **Description**: A central broker or server allows clients to subscribe to specific topics or channels. The server "publishes" messages to all clients subscribed to a given topic.
 - **Use Cases**:
     - Real-time notifications
@@ -83,7 +83,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 2. Observer Pattern
+## Observer Pattern
 - **Description**: A specific client (the "subject") notifies all observers (other clients) whenever its state changes.
 - **Use Cases**:
     - Multiplayer games (e.g., broadcasting game state updates to all players).
@@ -96,7 +96,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 3. Request-Reply Pattern
+## Request-Reply Pattern
 - **Description**: The client sends a message over the WebSocket connection, and the server responds with a corresponding reply.
 - **Use Cases**:
     - Real-time queries (e.g., fetching live data).
@@ -110,7 +110,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 4. Message Queue Pattern
+## Message Queue Pattern
 - **Description**: Messages are queued on the server and delivered to clients asynchronously. This is useful for handling bursts of activity without overloading clients or the server.
 - **Use Cases**:
     - Logging and analytics.
@@ -123,7 +123,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 5. Connection Pooling
+## Connection Pooling
 - **Description**: Multiple WebSocket connections are pooled and managed to efficiently handle a large number of clients.
 - **Use Cases**:
     - Real-time dashboards.
@@ -136,7 +136,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 6. Backpressure Management
+## Backpressure Management
 - **Description**: Ensures that the server or client doesn't get overwhelmed by a high volume of messages.
 - **Use Cases**:
     - High-frequency data feeds (e.g., financial market updates, IoT).
@@ -147,7 +147,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 7. Session Management
+## Session Management
 - **Description**: Tracks user sessions and associates WebSocket connections with user accounts.
 - **Use Cases**:
     - Secure chat applications.
@@ -160,7 +160,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 8. Room-Based Pattern
+## Room-Based Pattern
 - **Description**: Organizes clients into "rooms" or "groups" where they can communicate with each other.
 - **Use Cases**:
     - Chat rooms or group messaging.
@@ -173,7 +173,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 9. Failover and Redundancy Pattern
+## Failover and Redundancy Pattern
 - **Description**: Ensures reliability by having backup servers ready to handle connections if the primary server fails.
 - **Use Cases**:
     - Critical systems (e.g., healthcare, financial systems).
@@ -185,7 +185,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 10. Event-Driven Architecture
+## Event-Driven Architecture
 - **Description**: The WebSocket server emits events based on specific triggers, and clients can listen for those events.
 - **Use Cases**:
     - Real-time analytics (e.g., user activity tracking).
@@ -198,7 +198,7 @@ When implementing WebSockets, using well-established design patterns can help en
 
 ---
 
-## 11. Reconnection Pattern
+## Reconnection Pattern
 - **Description**: Handles cases where WebSocket connections are interrupted and need to be re-established automatically.
 - **Use Cases**:
     - Mobile applications with intermittent network connectivity.
