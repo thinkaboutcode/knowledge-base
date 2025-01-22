@@ -3,7 +3,7 @@
 ```mermaid
 mindmap
   root((Domain-Driven Design))
-    Core Concepts
+    Core Concepts - Strategic Design
       Domain
       Ubiquitous Language
       Bounded Context
@@ -12,7 +12,7 @@ mindmap
         Supporting Subdomain
         Generic Subdomain
       Context Map
-    Building Blocks
+    Building Blocks - Tactical Design
       Entities
       Value Objects
       Aggregates
@@ -20,12 +20,10 @@ mindmap
       Repositories
       Factories
       Domain Services
+      Modules
     Communication
       Domain Events
       Anti-Corruption Layer (ACL)
-    Organization
-      Modules
-      Strategic Design
     Patterns
       Layered Architecture
       CQRS
