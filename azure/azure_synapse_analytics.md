@@ -1,13 +1,12 @@
+# Azure Synapse Analytics
 
-## Table of Contents
-
-* [Overview of Azure Synapse Analytics](#overview-of-azure-synapse-analytics)
+* [Overview](#overview)
 * [Key Features of Azure Synapse Analytics](#key-features-of-azure-synapse-analytics)
 * [Use Cases for Azure Synapse Analytics](#use-cases-for-azure-synapse-analytics)
 * [Azure Synapse Analytics vs. Azure Data Factory](#azure-synapse-analytics-vs-azure-data-factory)
 * [Summary](#summary)
 
-### Overview of Azure Synapse Analytics
+## Overview
 **Azure Synapse Analytics** is a powerful, unified analytics platform provided by Microsoft that integrates data integration, enterprise data warehousing, and big data analytics. It enables organizations to analyze data across various sources using advanced tools, SQL, and big data frameworks like Apache Spark. Synapse provides a seamless experience to ingest, prepare, manage, and serve data for immediate business intelligence and machine learning needs.
 
 ---

@@ -1,15 +1,15 @@
-# Table of Contents
+# Azure Data Factory (ADF)
 
-1. [Azure Data Factory (ADF) Overview](#azure-data-factory-adf-overview)
-2. [Key Features of Azure Data Factory](#key-features-of-azure-data-factory)
-3. [Core Components of Azure Data Factory](#core-components-of-azure-data-factory)
-4. [Common Use Cases for Azure Data Factory](#common-use-cases-for-azure-data-factory)
-5. [Integrations with Other Azure Services](#integrations-with-other-azure-services)
-6. [Benefits of Azure Data Factory](#benefits-of-azure-data-factory)
-7. [Limitations of Azure Data Factory](#limitations-of-azure-data-factory)
-8. [Pricing Model](#pricing-model)
+* [Overview](#overview)
+* [Key Features of Azure Data Factory](#key-features-of-azure-data-factory)
+* [Core Components of Azure Data Factory](#core-components-of-azure-data-factory)
+* [Common Use Cases for Azure Data Factory](#common-use-cases-for-azure-data-factory)
+* [Integrations with Other Azure Services](#integrations-with-other-azure-services)
+* [Benefits of Azure Data Factory](#benefits-of-azure-data-factory)
+* [Limitations of Azure Data Factory](#limitations-of-azure-data-factory)
+* [Pricing Model](#pricing-model)
 
-# Azure Data Factory (ADF) Overview
+## Overview
 
 Azure Data Factory (ADF) is a fully managed, cloud-based data integration service by Microsoft Azure. It allows organizations to orchestrate and automate the movement and transformation of data at scale across diverse data stores and compute services. It is often used to build **ETL (Extract, Transform, Load)**, **ELT (Extract, Load, Transform)**, and **data integration pipelines**.
 
