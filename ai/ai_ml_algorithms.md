@@ -1,36 +1,36 @@
 # Machine Learning Algorithms
 
 - [Supervised Learning](#supervised-learning)
-    - [Linear Regression](#linear-regression)
-    - [Logistic Regression](#logistic-regression)
-    - [Decision Trees](#decision-trees)
-    - [Random Forest](#random-forest)
-    - [Support Vector Machines (SVM)](#support-vector-machines-svm)
-    - [k-Nearest Neighbors (k-NN)](#k-nearest-neighbors-k-nn)
-    - [Naive Bayes](#naive-bayes)
+    - Linear Regression
+    - Logistic Regression
+    - Decision Trees
+    - Random Forest
+    - Support Vector Machines (SVM)
+    - k-Nearest Neighbors (k-NN)
+    - Naive Bayes
 
 - [Unsupervised Learning](#unsupervised-learning)
-    - [k-Means Clustering](#k-means-clustering)
-    - [Hierarchical Clustering](#hierarchical-clustering)
-    - [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
-    - [t-SNE (t-distributed Stochastic Neighbor Embedding)](#t-sne-t-distributed-stochastic-neighbor-embedding)
+    - k-Means Clustering
+    - Hierarchical Clustering
+    - Principal Component Analysis (PCA)
+    - t-SNE (t-distributed Stochastic Neighbor Embedding)
 
 - [Ensemble Methods](#ensemble-methods)
-    - [Gradient Boosting](#gradient-boosting)
-    - [Bagging](#bagging)
+    - Gradient Boosting
+    - Bagging
 
 - [Neural Networks](#neural-networks)
-    - [Artificial Neural Networks (ANN)](#artificial-neural-networks-ann)
-    - [Convolutional Neural Networks (CNN)](#convolutional-neural-networks-cnn)
-    - [Recurrent Neural Networks (RNN)](#recurrent-neural-networks-rnn)
+    - Artificial Neural Networks (ANN)
+    - Convolutional Neural Networks (CNN)
+    - Recurrent Neural Networks (RNN)
 
 - [Reinforcement Learning](#reinforcement-learning)
-    - [Q-Learning](#q-learning)
-    - [Deep Q-Networks (DQN)](#deep-q-networks-dqn)
+    - Q-Learning
+    - Deep Q-Networks (DQN)
 
 - [Dimensionality Reduction](#dimensionality-reduction)
-    - [LDA (Linear Discriminant Analysis)](#lda-linear-discriminant-analysis)
-    - [Autoencoders](#autoencoders)
+    - LDA (Linear Discriminant Analysis)
+    - Autoencoders
 
 
 ## **Supervised Learning**
