@@ -1,4 +1,47 @@
-# Large Language Model (LLM) Architecture Cheatsheet
+# Large Language Model (LLM) Architecture
+
+```mermaid
+mindmap
+  root(LLM Aspects))
+    Introduction to LLM
+      Large Language Models
+      AI models designed to understand and generate text
+      Uses deep learning techniques like transformers
+    Core Components of LLM Architecture
+      Tokenization
+        Word-level
+        Subword-level
+        Character-level
+      Embedding Layer
+        Word2Vec / GloVe
+        Contextual Embeddings
+      Positional Encoding
+        Sinusoidal functions
+        Learnable embeddings
+    Transformer Architecture
+      Self-Attention Mechanism
+        Queries, Keys, Values
+        Attention Weights
+      Multi-Head Attention
+        Parallel attention heads
+        Concatenation and linear transformation
+      Feed-Forward Network
+        Linear layer → Activation → Linear layer
+      Layer Normalization
+        Stabilizes training
+      Residual Connections
+        Shortcuts between layers for gradient flow
+    Training Process
+      Pretraining
+        Self-supervised objectives
+        Autoregressive
+        Autoencoding
+      Fine-Tuning
+        Adjusting weights for specific tasks
+    Types of LLMs
+      Autoregressive Models
+      Autoencoding Models
+```
 
 ## 1. **Introduction to LLM**
 Large Language Models (LLMs) are AI models designed to understand and generate human-like text based on a massive amount of data. LLMs use deep learning techniques, specifically **transformers**, to process and generate natural language efficiently.
