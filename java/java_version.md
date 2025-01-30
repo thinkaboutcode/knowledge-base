@@ -91,7 +91,7 @@ public class RecordPatternExample {
 ```
 
 #### Virtual Threads
-[Check this for more info](code_java_virtual_threads_cheatsheet.md) 
+[Check this for more info](java_virtual_threads.md) 
 
 #### Sequenced Collections
 

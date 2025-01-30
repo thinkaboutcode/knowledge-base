@@ -124,20 +124,12 @@
 - **Role-Based Access Control (RBAC)**: Allows developers to assign roles and permissions to users, ensuring that they only have access to the resources they are authorized for.
 - **Single Sign-On (SSO)**: Java EE supports SSO for authenticating users across different applications within an enterprise.
 
-## 13. **JavaServer Faces (JSF)**
+## 13. **Jakarta Faces (aka JavaServer Faces - JSF)**
 - **Component-Based UI Framework**: JSF provides a set of reusable UI components and a powerful page navigation model for developing web applications.
 - **Managed Beans**: JSF uses managed beans for event-driven handling and session management.
 - **Facelets**: A templating engine used for rendering views in JSF, improving flexibility in building dynamic web UIs.
 
-## 14. **CDI (Contexts and Dependency Injection)**
-- **Dependency Injection**: CDI simplifies the process of injecting dependencies into enterprise components, reducing the need for boilerplate code.
-- **Event-based Programming**: CDI enables an event-based architecture where components can send and receive events asynchronously.
-- **Qualifiers and Scope Annotations**: Helps developers define the scope of beans and apply various qualifiers to select specific beans.
-
-## 15. **Jakarta EE & Cloud-Native Features**
+## 14. **Jakarta EE & Cloud-Native Features**
 - **MicroProfile Integration**: Jakarta EE supports building microservices and cloud-native applications. Features like configuration management, health checks, and metrics are part of the Jakarta EE ecosystem.
 - **Cloud-Native Services**: The Jakarta EE platform is designed to be cloud-friendly, supporting modern deployment models such as Kubernetes and Docker.
 - **Reactive Programming**: Jakarta EE has adopted reactive programming principles with specifications like **Reactive Streams** and support for **asynchronous processing** in RESTful services.
-
-## 16. **Jakarta Faces (Jakarta Server Pages)**
-- **Dynamic User Interfaces**: Jakarta Faces (formerly JSF) is designed to facilitate dynamic user interface generation using reusable components, supporting event handling, form validation, and navigation.

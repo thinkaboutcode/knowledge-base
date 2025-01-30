@@ -2,7 +2,7 @@
 
 ---
 
-## Mindmap Example for UML Diagrams
+## UML Diagram Types
 
 ```mermaid
 mindmap
