@@ -20,8 +20,8 @@ graph TD
 
 ### **Simple Configuration (BIND Zone File)**
 ```plaintext
-; Tool: BIND DNS Server
-; DNS Zone File for example.com
+# Tool: BIND DNS Server
+# DNS Zone File for example.com
 $TTL 86400
 @   IN  SOA ns1.example.com. admin.example.com. (
         2025011201 ; Serial
