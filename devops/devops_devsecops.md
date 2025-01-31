@@ -39,6 +39,14 @@ mindmap
     Conclusion
 ```
 
+1. [Overview of DevSecOps](#overview-of-devsecops)
+2. [Key Concepts](#key-concepts)
+3. [Phases of DevSecOps](#phases-of-devsecops)
+4. [Tools Used in DevSecOps](#tools-used-in-devsecops)
+5. [Benefits of DevSecOps](#benefits-of-devsecops)
+6. [Challenges of DevSecOps](#challenges-of-devsecops)
+7. [Conclusion](#conclusion)
+
 **DevSecOps** (Development, Security, and Operations) is an integrated approach to software development and operations that emphasizes the importance of security at every stage of the software development lifecycle (SDLC). Traditionally, security was treated as a separate process handled only at the end of the development cycle, but in modern software engineering practices, security is integrated directly into the development and deployment pipelines, ensuring that vulnerabilities are detected and mitigated as early as possible.
 
 DevSecOps builds upon the principles of **DevOps**, which is an approach that focuses on the collaboration and integration between software development (Dev) and IT operations (Ops). DevSecOps takes this a step further by incorporating security into every phase of the pipeline. The goal is to make security a shared responsibility across the entire development process rather than the responsibility of a single team or a final-stage review.
