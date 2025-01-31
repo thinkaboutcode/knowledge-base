@@ -1,4 +1,4 @@
-# Jenkins CI/CD Pipelines Tutorial
+# Jenkins CI/CD Pipelines
 
 **Table of Contents:**
 1. [Introduction to Jenkins CI/CD Pipelines](#1-introduction-to-jenkins-cicd-pipelines)

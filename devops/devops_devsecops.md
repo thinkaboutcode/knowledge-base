@@ -1,5 +1,44 @@
 # Overview of DevSecOps
 
+```mermaid
+mindmap
+  root(DevSecOps Overview)
+    Key Concepts
+      Shift-Left Security
+      Automation
+      Collaboration and Shared Responsibility
+      Continuous Monitoring
+      Security as Code
+      Vulnerability Management and Patching
+    Phases of DevSecOps
+      Planning
+      Development
+      Build
+      Testing
+      Release and Deployment
+      Operations and Monitoring
+    Tools Used in DevSecOps
+      SAST
+      DAST
+      SCA
+      IaC Security
+      Container Security
+      CI/CD
+      SIEM
+    Benefits of DevSecOps
+      Early Detection of Vulnerabilities
+      Reduced Costs
+      Improved Compliance
+      Faster Delivery with Confidence
+      Collaboration and Accountability
+    Challenges of DevSecOps
+      Cultural Change
+      Tooling Complexity
+      Balancing Speed with Security
+      Skills Gap
+    Conclusion
+```
+
 **DevSecOps** (Development, Security, and Operations) is an integrated approach to software development and operations that emphasizes the importance of security at every stage of the software development lifecycle (SDLC). Traditionally, security was treated as a separate process handled only at the end of the development cycle, but in modern software engineering practices, security is integrated directly into the development and deployment pipelines, ensuring that vulnerabilities are detected and mitigated as early as possible.
 
 DevSecOps builds upon the principles of **DevOps**, which is an approach that focuses on the collaboration and integration between software development (Dev) and IT operations (Ops). DevSecOps takes this a step further by incorporating security into every phase of the pipeline. The goal is to make security a shared responsibility across the entire development process rather than the responsibility of a single team or a final-stage review.

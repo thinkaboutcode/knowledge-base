@@ -1,4 +1,4 @@
-# GitLab CI/CD Tutorial
+# GitLab CI/CD
 
 ## Table of Contents
 1. [Introduction to GitLab CI/CD](#1-introduction-to-gitlab-cicd)
