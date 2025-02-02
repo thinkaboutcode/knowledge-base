@@ -5,9 +5,9 @@
 
 - [ai_bias_vs_variance.md](./ai/ai_bias_vs_variance.md)
 - [ai_frameworks_python.md](./ai/ai_frameworks_python.md)
-- [ai_llm_aspects.md](./ai/ai_llm_aspects.md)
+- [ai_llm_overview.md](./ai/ai_llm_overview.md)
 - [ai_llm_embedders.md](./ai/ai_llm_embedders.md)
-- [ai_llm_guidelines.md](./ai/ai_llm_guidelines.md)
+- [ai_llm_guide_to_choose.md](./ai/ai_llm_guide_to_choose.md)
 - [ai_llm_hosting.md](./ai/ai_llm_hosting.md)
 - [ai_llm_models.md](./ai/ai_llm_models.md)
 - [ai_llm_prompting.md](./ai/ai_llm_prompting.md)
