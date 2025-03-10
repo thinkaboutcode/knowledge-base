@@ -184,6 +184,7 @@
 - [k8s_objects.md](./k8s/k8s_objects.md)
 - [k8s_operators.md](./k8s/k8s_operators.md)
 - [k8s_patterns.md](./k8s/k8s_patterns.md)
+- [k8s_policy_enformcement.md](./k8s/k8s_policy_enforcement)
 - [k8s_rancher.md](./k8s/k8s_rancher.md)
 - [k8s_scheduling.md](./k8s/k8s_scheduling.md)
 - [k8s_secrets.md](./k8s/k8s_secrets.md)
