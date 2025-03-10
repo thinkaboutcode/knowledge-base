@@ -1,7 +1,3 @@
-Got it! Here's the **Kubernetes Security Enforcing Policies Overview** without the blue icons:
-
----
-
 # **Kubernetes Security Enforcing Policies**
 
 Kubernetes security policies help protect clusters from misconfigurations, unauthorized access, and security risks. These policies can be implemented using **Kyverno**, **OPA Gatekeeper**, or built-in Kubernetes security features.
