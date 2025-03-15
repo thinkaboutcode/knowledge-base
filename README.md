@@ -227,6 +227,7 @@
 - [networking_tools.md](./networking/networking_tools.md)
 - [networking_ipam.md](./networking/networking_ipam.md)
 - [protocol_webrtc.md](./networking/protocol_webrtc.md)
+- [networking_sfu_mcu.md](./networking/networking_sfu_mcu.md)
 - [protocol_websockets.md](./networking/protocol_websockets.md)
 </details>
 <details>
