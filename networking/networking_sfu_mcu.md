@@ -70,5 +70,3 @@ An MCU is a **media processing server** that **mixes** or **transcodes** all par
 - **MCU** is better for **legacy conferencing systems** and scenarios where clients need a **single mixed stream** with minimal processing.
 
 Many modern conferencing systems use **hybrid** approaches, combining SFU and MCU functionalities based on network conditions and participant needs.
-
-Would you like more details on a specific aspect? 🚀
